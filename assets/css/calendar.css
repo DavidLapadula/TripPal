@@ -1,0 +1,152 @@
+/* Application Fonts and colors */
+body {
+    background-color:  rgb(189, 187, 187);  
+}
+ 
+.navy-background {
+    background-color: rgb(0, 63, 98); 
+}   
+
+.navy-text {
+    color: rgb(0, 63, 98); 
+}
+
+.tan-text {
+    color: rgb(126, 83, 4); 
+}  
+
+.tan-background {
+    background-color: rgb(126, 83, 4); 
+} 
+ 
+.header-font {
+    font-family: 'Luckiest Guy', cursive;
+} 
+
+.content-font {
+    font-family: 'Sura', serif;
+} 
+
+/* Body Styling */
+
+/* Navbar Styling */
+
+.navbar {   
+    font-size: 3vw;
+    height: 12vh; 
+}
+
+#user-header {
+    font-size: 4vw; 
+}
+
+#user-image {
+    height: 10vh; 
+}
+ 
+#profile-top-btn:hover {
+    background-color: rgb(126, 83, 4);
+} 
+
+#calendar-top-btn:hover {
+    background-color: rgb(126, 83, 4);; 
+}
+
+#user-options {
+    height: 2.1vw; 
+    font-size: 1.5vw; 
+    display: flex; 
+    align-items: center; 
+}
+
+#nav-h1 {
+    display: none; 
+    font-size: 7vw; 
+}
+
+/* Content Styling */
+
+#main-content {     
+    margin-top: 13vh; 
+}
+ 
+#top-profile-column {
+    height: 20vh; 
+    background:white; 
+}  
+
+#top-profile-background {
+    background-image: url("../images/map-header.jpg");  
+    -webkit-filter: blur(2px);
+    filter: blur(2px); 
+    z-index: 1
+} 
+
+#calendar-information-section {
+    background:white; 
+}
+
+#top-profile-content {
+    position: relative; 
+    bottom: 75%;
+    left: 33%; 
+    z-index: 2; 
+    font-size: 2.5vw; 
+}
+
+#top-profile-content h1 {
+    font-size: 3.5vw; 
+}
+ 
+
+/* Footer Styling */
+
+footer {
+    position: absolute; 
+    bottom: 0;
+}
+
+#footer-label {
+    font-size: 2vw; 
+} 
+
+.footer-content {
+    font-size: 1vw; 
+    color: white; 
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 576px) {
+    
+    #nav-h1 {
+        display: block; 
+    }
+
+    #footer-label {
+        font-size: 2.5vw; 
+    }
+    
+    .footer-content {
+        font-size: 1.5vw; 
+    }
+
+    #top-profile-content {
+        left: 20%; 
+        font-size: 4.5vw; 
+    }
+
+    #top-profile-content h1 {
+        font-size: 4.5vw; 
+    } 
+   
+    #footer-label {
+        font-size: 4vw; 
+    } 
+
+    .footer-content {
+        font-size: 3vw; 
+        color: white; 
+    }
+
+}

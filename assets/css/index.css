@@ -1,0 +1,223 @@
+
+/* Application Fonts and colors */
+.navy-background {
+    background-color: rgb(0, 63, 98); 
+}
+
+.navy-text {
+    color: rgb(0, 63, 98); 
+}
+
+.tan-text {
+    color: rgb(126, 83, 4); 
+}  
+
+.tan-background {
+    background-color: rgb(126, 83, 4); 
+} 
+ 
+.header-font {
+    font-family: 'Luckiest Guy', cursive;
+} 
+
+.content-font {
+    font-family: 'Sura', serif;
+} 
+
+/* Home page styling */ 
+
+body { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    height: 100vh; 
+    width: 100vw; 
+}
+
+#homepage-content {
+    height: 90vh; 
+    position: relative; 
+}
+
+#homepage-content img {
+    width: 100%; 
+    height: 100%; 
+}
+
+#homepage-leftPhoto {
+    position: relative; 
+    z-index: 1; 
+    left: 3em;
+    top: 5em;  
+} 
+
+#homepage-form {
+    z-index: 2;  
+    box-shadow: 0.5em 0.5em 1em rgb(126, 83, 4),
+    -0.5em 0.5em 1em rgb(126, 83, 4),
+    -0.5em -0.5em 1em rgb(126, 83, 4),
+    0.5em -0.5em 1em rgb(126, 83, 4); 
+}
+#homepage-form p {
+ font-size: 6vw; 
+}
+  
+#homepage-rightPhoto {
+    position: relative; 
+    z-index: 1; 
+    right: 3em; 
+    top: 7em; 
+} 
+ 
+/* Modal Styling */
+
+.modal-backdrop { 
+    z-index: 1; 
+} 
+
+ #myModal {
+     width: 50vw; 
+     margin: auto; 
+     position: absolute; 
+     top: 25%;
+ }
+
+ #logInModal, #googlelogInModal {
+     right: -25%; 
+ }
+   
+.modal {
+    left: -25%; 
+}
+
+ .submit-form-row {
+    height: 15%;  
+}
+
+.submit-form-special {
+    height: 21%; 
+}
+
+.submit-form-special-header {
+    font-size: 1.2vw; 
+}
+
+.submit-form-headers {
+    font-size: 1.5vw; 
+}
+
+#submit-form-buttons {
+    height: 10%
+}
+
+/* Authentication Buttons */
+
+#sign-up-button {
+    width: 10vw;
+    font-size: 2vw; 
+}
+ 
+#google-log-in, #general-log-in {
+    width: 8vw;
+    font-size: 1.2vw; 
+}
+
+ 
+/* Media Queries */
+
+  
+@media screen and (max-width: 992px) {
+
+    #homepage-form {
+        position: fixed;
+        height: 80vh;  
+    }
+    
+    #homepage-form p {
+        font-size: 10vw;  
+    }
+
+    #homepage-leftPhoto {
+        display: none;  
+    }  
+
+    #homepage-rightPhoto {
+        display: none;  
+    }  
+
+    #homepage-content {
+        width: 90vw;  
+        position: relative; 
+    }
+
+    #form-submit-button {
+        width: 30vw; 
+    }
+
+    .col-4 {
+        width: 80vw; 
+        max-width: 100%
+    }
+
+    #sign-up-button {
+        width: 35vw;
+        font-size: 5vw; 
+    }
+
+    #logInModal, #googlelogInModal {
+        right: -45%; 
+    } 
+     
+    #google-log-in, #general-log-in {
+        width: 30vw;
+        font-size: 4vw; 
+    } 
+
+    .btn {
+        padding: 0; 
+    }
+
+    .submit-form-special-header {
+        font-size: 3vw; 
+    }
+    
+    .submit-form-headers {
+        font-size: 2vw; 
+    }
+
+    #myModal {
+        width: 85vw; 
+        top: 22.5%; 
+        right: -33%; 
+    }
+
+    .modal-dialog {
+        max-width: 80vw; 
+        width: 80vw; 
+        right: 5%; 
+    }
+ 
+} 
+   
+@media screen and (max-width: 600px) {
+
+    #myModal {
+        top: 8%;
+        left: -25%; 
+    }
+   
+    #logInModal, #googlelogInModal {
+        left: 13%;
+        top: 25%;
+        width: 90vw; 
+    }
+
+    .submit-form-special-header {
+        font-size: 5vw; 
+    }
+    
+    .submit-form-headers {
+        font-size: 4vw; 
+    }
+} 

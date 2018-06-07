@@ -1,17 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-<head> 
+<html lang="en">  
+<head>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profile</title>  
+    <title>Profile</title>      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!-- Link to jQuery library--> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> <!-- Bootstrap used to design the layout-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!-- Link to jQuery library-->
-                                                                                                 <!-- Google Fonta-->
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css"/>  <!-- External style sheet-->
-    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">     <!-- Favicon-->  
-</head>        
-<body>          
-    <script src="assets/javascript/main_JS.js"></script> <!--Link to external javascript file  --> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"> <!-- Font awesome Icons-->
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Sura" rel="stylesheet">     <!-- Google Fonts -->  
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/profile.css"/>  <!-- External Personal style sheet-->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">     <!-- Favicon-->  
+</head>              
+<body>   
+  <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-sm navy-background">
+        <button class="navbar-toggler bg-light tan-background" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><i class="fas fa-list"></i></span> 
+        </button>    
+        <h1 id="nav-h1" class="header-font tan-text m-auto">Trip Pal</h1>  
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav w-100">
+            <a id="profile-top-btn" class="nav-item nav-link text-light content-font border rounded m-1 d-flex align-items-center" href="#">Profile</a>
+            <a id="calendar-top-btn"class="nav-item nav-link text-light content-font border rounded m-1 d-flex align-items-center" href="#">Calendar</a>
+            <div class="d-flex align-items-center ml-auto">
+              <img class="bg-light rounded d-inline m-2" id="user-image" src="../assets/images/placeholder.png">
+              <h1 id="user-header" class="header-font tan-text d-inline m-2"> Random User</h1>
+              <button id="user-options" class="rounded m-2 tan-background text-light"> 
+                  <i class="far fa-caret-square-down"></i>
+              </button> 
+          </div> 
+          </div>    
+        </div>        
+    <!-- Main Section -->  
+    </nav> 
+    <div id="main-content" class="row test d-flex align-items-center justify-content-center"> 
+      <div id="top-profile-column" class="col-10 rounded p-1">
+        <div id="top-profile-background" class="col-12 h-100">
+        </div>   
+        <div id="top-profile-content" class="bg-light d-table rounded justify-content-center">
+            <i class="fas fa-globe m-3 tan-text"></i>
+            <h1 class="d-inline m-2 navy-text content-font font-weight-bold"> Destination </h1>
+            <i class="fas fa-suitcase m-3 tan-text"></i> 
+        </div>
+      </div> 
+      <div id="profile-information-section" class="col-9 rounded mt-2 container-fluid"> 
+      </div>  
+    </div>
+    <!-- Footer --> 
+    <footer class=" container-fluid w-100 navy-background">
+      <div class="footer-copyright text-center text-black-50"> 
+        <p id="footer-label" class="header-font tan-text mb-1">TP</p>
+        <p class="mb-1 footer-content">Copyright <i class="fas fa-copyright"></i> 2018</p>
+        <p class="mb-1 footer-content"> hAckeDD Development Team: Derek, Angelina, and David</p>
+      </div>   
+    </footer> 
+    <script "../assets/javascript/profile.js"></script> <!--Link to external javascript file -->    
 </body>
 </html>  
+
+<!-- Data-toggle pill https://www.w3schools.com/bootstrap/bootstrap_tabs_pills.asp -->
