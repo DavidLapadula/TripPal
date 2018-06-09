@@ -1,64 +1,231 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">  
 <head>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Calendar</title>     
+    <title>Calendar</title>         
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> <!-- Bootstrap used to design the layout-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!-- Link to jQuery library--> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> <!-- Animate CSS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!-- Link to jQuery library-->  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script> <!-- Popper javascript for modal-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> <!-- Bootstrap min for modals-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"> <!-- Font awesome Icons-->
-    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Sura" rel="stylesheet">     <!-- Google Fonts -->  
-    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/calendar.css"/>  <!-- External Personal style sheet-->
     <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/classic.css"/>  <!-- External style sheet for picker-->
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/kalendae.css"/>  <!-- External style sheet for picker-->
     <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/classic.date.css"/>  <!-- External style sheet for date picker-->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">     <!-- Favicon-->   
-</head>        
-<body>   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"> <!-- Font awesome Icons-->
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Sura" rel="stylesheet">     <!-- Google Fonts -->
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/calendar.css"/>  <!-- External Personal style sheet-->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">     <!-- Favicon-->  
+</head>              
+<body>  
   <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-sm navy-background">
-        <button class="navbar-toggler bg-light tan-background" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"><i class="fas fa-list"></i></span> 
-        </button>   
-        <h1 id="nav-h1" class="header-font tan-text m-auto">Trip Pal</h1>  
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav w-100">
+  <nav id="navbar" class="navbar fixed-top navbar-expand-sm navy-background pt-2">
+      <button class="navbar-toggler bg-light tan-background" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fas fa-list"></i></span> 
+      </button>      
+      <h1 id="nav-h1" class="header-font tan-text m-auto">Trip Pal</h1>  
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> 
+        <div class="navbar-nav w-100 d-flex align-items-center pt-1 pb-1"> 
             <a id="profile-top-btn" class="nav-item nav-link text-light content-font border rounded m-1 d-flex align-items-center" href="#">Profile</a>
             <a id="calendar-top-btn"class="nav-item nav-link text-light content-font border rounded m-1 d-flex align-items-center" href="#">Calendar</a>
             <div class="d-flex align-items-center ml-auto">
               <img class="bg-light rounded d-inline m-2" id="user-image" src="../assets/images/placeholder.png">
-              <h1 id="user-header" class="header-font tan-text d-inline m-2"> Random User</h1>
-              <button id="user-options" class="rounded m-2 tan-background text-light"> 
-                  <i class="far fa-caret-square-down"></i>
-              </button> 
+              <h1 id="user-header" class="header-font tan-text d-inline m-2" data-toggle="modal" data-target="#profile-modal"> Random User</h1>
+          </div>   
+        </div>       
+      </div>                   
+  </nav>   
+    <!-- Profile Altering Modal-->
+    <div id="profile-modal" class="modal text-center" role="dialog">
+      <div class="modal-dialog modal-lg mt-2 d-flex justify-content-center">
+          <!-- User alter modal content-->  
+          <div class="modal-content"> 
+              <div class="modal-header navy-background">
+              <button type="button" class="bg-light tan-text rounded btn-lg m-2" data-dismiss="modal">X</button>
+              <button id="log-out-btn" type="button" class="bg-light tan-text rounded btn-lg m-2 font-weight-bold">Log Out</button>
+              </div>   
+              <div class="modal-body">
+                  <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row"> 
+                      <div class="col-12">
+                          <h1 class="tan-text header-font submit-form-headers">Change Start Date</h1>
+                      </div> 
+                      <div class="col-12"> 
+                          <div class="input-group ">
+                              <input id="change-start-date" type="text" class="form-control navy-text mt-1 mb-1" placeholder="New Start Date">
+                          </div> 
+                      </div>   
+                  </div>  
+                  <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row"> 
+                      <div class="col-12">
+                          <h1 class="tan-text header-font submit-form-headers">Change End Date</h1>
+                      </div> 
+                      <div class="col-12"> 
+                          <div class="input-group ">
+                              <input id="change-end-date" type="text" class="form-control navy-text mt-1 mb-1" placeholder="New End Date">
+                          </div> 
+                      </div>   
+                  </div>  
+                  <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row"> 
+                      <div class="col-12">
+                          <h1 class="tan-text header-font submit-form-headers">Change Location</h1>
+                      </div>   
+                      <div class="col-12"> 
+                          <div class="input-group ">
+                              <input id="new-location-input" type="text" class="form-control navy-text mt-1 mb-1" placeholder="New Location">
+                          </div> 
+                      </div>  
+                  </div>  
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+              <button id="change-info-btn"  type="button" class="btn btn-lg navy-background text-light content-font m-auto p-3">Change</button>
+              </div>
           </div> 
-          </div>    
-        </div>        
-    <!-- Main Section -->  
-    </nav> 
-    <div id="main-content" class="row test d-flex align-items-center justify-content-center"> 
-      <div id="top-profile-column" class="col-10 rounded p-1">
+        </div>  
+    </div>    
+      <!-- Add activity content Modal-->  
+  <div id="add-activity-modal" class="modal text-center" role="dialog">
+      <div class="modal-dialog modal-lg mt-2 d-flex justify-content-center">
+        <div class="modal-content"> 
+          <div class="modal-header navy-background">
+          <button type="button" class="bg-light tan-text rounded btn-lg m-2" data-dismiss="modal">X</button>
+          </div>   
+          <div class="modal-body">
+              <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row"> 
+                  <div class="col-12">
+                      <h1 class="tan-text header-font submit-form-headers">Category</h1>
+                  </div> 
+                  <div class="col-12"> 
+                      <div class="input-group ">
+                          <input id="add-activity-input" type="text" class="form-control navy-text mt-1 mb-1" placeholder="Enter Type">
+                      </div> 
+                  </div>  
+              </div>  
+              <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row"> 
+                  <div class="col-12">
+                      <h1 class="tan-text header-font submit-form-headers">Event</h1>
+                  </div> 
+                  <div class="col-12"> 
+                      <div class="input-group ">
+                          <input id="add-event-input" type="text" class="form-control navy-text mt-1 mb-1" placeholder="Description">
+                      </div> 
+                  </div>   
+              </div>      
+              <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row"> 
+                <div class="col-12">
+                    <h1 class="tan-text header-font submit-form-headers">URL</h1>
+                </div> 
+                <div class="col-12"> 
+                    <div class="input-group ">
+                        <input id="add-url-input" type="text" class="form-control navy-text mt-1 mb-1  submit-form-headers" placeholder="Enter URL for activity">
+                    </div> 
+                </div>  
+            </div>   
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button id="add-full-list-btn" type="button" class="btn btn-lg navy-background text-light content-font m-auto p-3">Add</button>
+          </div>
+        </div>  
+    </div>
+  </div>
+  <!-- Main Section -->
+  <div id="calendar-page-container" class="row d-flex align-items-center justify-content-center mb-1">
+    <div id="top-profile-column" class="col-10 rounded p-1">
         <div id="top-profile-background" class="col-12 h-100">
         </div>   
         <div id="top-profile-content" class="bg-light d-table rounded justify-content-center">
             <i class="fas fa-globe m-3 tan-text"></i>
             <h1 class="d-inline m-2 navy-text content-font font-weight-bold"> Destination </h1>
-            <i class="fas fa-suitcase m-3 tan-text"></i> 
         </div>
+    </div>       
+  </div> 
+  <div class="row justify-content-center">
+      <div class="col-md-3 col-sm-8 col-xs-8 m-2">
+        <div class="row bg-light justify-content-center align-items-center">
+            <h1 class="section-header navy-text header-font header-font-size"> Pick a Date </h1>
+            <div id="calendar-pick-date" class="auto-kal d-block p-2 rounded text-center">
+            </div>
+        </div>  
+            <div class="row mt-3 bg-light justify-content-center align-items-center rounded p-1">
+                <h1 class="section-header header-font tan-text mr-2">Selected Day</h1>
+                <div>
+                    <button id="remove-daily-activity-btn" class="navy-background rounded text-light p-1">Remove</button>
+                </div> 
+                <div class="grey-background navy-text rounded mt-2 content-font-size">
+                    <div class="table-responsive">
+                        <table id="current-day-activities" class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Event</th> 
+                            </tr> 
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Food</td>
+                                <td>Dinner at the Mcdonald's on first street</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> 
+            </div> 
+      </div>
+      <div class="col-md-3 col-sm-8 m-2">
+          <div class="row bg-light justify-content-center align-items-center rounded p-1">
+              <h1 class="section-header header-font tan-text d-block mr-2"> All Activites</h1>
+              <div> 
+                <button id="add-activity-btn" class="d-inline navy-background rounded text-light p-1" data-toggle="modal" data-target="#add-activity-modal">Add</button>
+                <button id="remove-activity-btn" class="d-inline navy-background rounded text-light p-1">Remove</button>
+              </div>
+              <div class="grey-background navy-text rounded mt-2 content-font-size">
+                <div id="full-activities-table" class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead> 
+                        <tr>
+                            <th>Category</th>
+                            <th>Event</th> 
+                        </tr>
+                        </thead> 
+                        <tbody> 
+                        <tr>  
+                            <td>Food</td>
+                            <td>Dinner at the Mcdonald's on first street</td>
+                        </tr>    
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+          </div>
       </div> 
-      <div id="calendar-information-section" class="col-9 rounded mt-2 container-fluid"> 
-      </div>  
+      <div class="col-md-4 col-sm-8 m-2 text-center">
+        <div class="col-12 bg-light justify-content-center rounded p-1 mb-2">
+            <h1 class="section-header header-font tan-text d-block mr-1 mb-0">Search</h1>
+            <div class="col-12 justify-content-center"> 
+              <button id="search-activity-btn" class="d-inline navy-background rounded text-light p-1">Search</button>
+              <button id="clear-list-btn" class="d-inline navy-background rounded text-light p-1">Clear</button>
+              <input id="search-activities-input" type="text" class="form-control navy-text mt-1 mb-1 text-center" placeholder="search something to do">
+            </div>
+            <div class="grey-background text-left m-3 rounded content-font-size">
+                <ul id="search-activities-ul" class="navy-text content-font">
+                    <li>Dancing at the holiday in </li>
+                    <li>Casino downtown </li> 
+                </ul> 
+            </div> 
+        </div>
     </div>
-    <!-- Footer --> 
-    <footer class=" container-fluid w-100 navy-background">
-      <div class="footer-copyright text-center text-black-50"> 
-        <p id="footer-label" class="header-font tan-text mb-1">TP</p>
-        <p class="mb-1 footer-content">Copyright <i class="fas fa-copyright"></i> 2018</p>
-        <p class="mb-1 footer-content"> hAckeDD Development Team: Derek, Angelina, and David</p>
-      </div>   
-    </footer> 
-    <script "../assets/javascript/calendar.js"></script> <!--Link to external javascript file -->    
+  </div>   
+   <!-- Footer --> 
+   <footer class="container-fluid w-100 navy-background d-flex align-items-center justify-content-center mt-2">
+    <div class="footer-copyright text-center"> 
+      <p class="mb-1 footer-content">Copyright <i class="fas fa-copyright"></i> 2018</p>
+      <p class="mb-1 footer-content"> hAckeDD Development Team: Derek, Angelina, and David</p>
+    </div>   
+  </footer>  
+  <script src="../assets/javascript/picker.js"></script> <!-- Main Picker javascript--> 
+  <script src="../assets/javascript/picker.date.js"></script> <!-- Picker javascript for the date-->    
+  <script src="../assets/javascript/profile.js"></script> <!--Link to external javascript file--> 
+  <script src="../assets/javascript/user.js"></script> <!--Link to external javascript file for the general user information--> 
+  <script src="../assets/javascript/kalendae.js"></script> <!--Link to external javascript file for the calendar--> 
 </body>
 </html>  
