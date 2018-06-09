@@ -3,6 +3,7 @@ $(document).ready(function () {
     //Selectors
 
         var slideshowImages = $('#slideshow-images');
+        
         //Sign Up form
         var nameInput = $('#name-input');
         var emailInput = $('#email-input');
@@ -11,18 +12,16 @@ $(document).ready(function () {
         var endDateInput = $('#end-date-input');
         var cityInput = $('#city-input');
         var countryInput= $('#country-input');
-        var formSubmitButton= $('#form-submit-button');
+        var formSubmitButn= $('#form-submit-button');
+         
         //General Sign In
         var emailInputLogIn = $('#email-input-logIn'); 
         var passwordInputlogIn = $('#password-input-logIn');
         var generalLogInBtn= $('#logIn-submit-button');
-        // Google Sign In
-        var googleEmailInputLogIn = $('#google-email-input-logIn'); 
-        var googleSubmitBtn= $('#google-submit-btn');
         
     
     //Images for slideshow
-        var imageSource = ['download.jpg', 'flight.jpg', 'hands.jpg', 'quote.jpg', 'sign.jpg', 'travel.jpg', ]; 
+        var imageSource = ['download.jpg', 'flight.jpg', 'hands.jpg', 'quote.jpg', 'sign.jpg', 'travel.jpg']; 
 
     // Two functions that run the slideshow
         var slideshow = function () {
@@ -37,7 +36,7 @@ $(document).ready(function () {
             if (slideshowIndex > imageSource.length-1) {
                 slideshowIndex = 0;  
             } 
-        }  
+        }   
     slideshow();   
       
     //Date picker
@@ -63,7 +62,7 @@ $(document).ready(function () {
         }
         else if ( 'clear' in event ) {
         to_picker.set('min', false)
-        }
+        } 
         })
         to_picker.on('set', function(event) {
         if ( event.select ) {

@@ -24,7 +24,7 @@
     font-family: 'Sura', serif;
 } 
 
-/* Home page styling */ 
+/* Main Section Styling on the index page */ 
 
 body { 
     display: flex; 
@@ -69,6 +69,11 @@ body {
     right: 3em; 
     top: 7em; 
 } 
+
+input {
+    font-weight: bolder; 
+    text-align: center; 
+}
  
 /* Modal Styling */
 
@@ -91,7 +96,7 @@ body {
     left: -25%; 
 }
 
- .submit-form-row {
+.submit-form-row {
     height: 15%;  
 }
 
@@ -215,7 +220,7 @@ body {
 
     .submit-form-special-header {
         font-size: 5vw; 
-    }
+    }  
     
     .submit-form-headers {
         font-size: 4vw; 

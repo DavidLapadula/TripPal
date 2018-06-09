@@ -1,8 +1,23 @@
 /* Application Fonts and colors */
+html {
+    height: 100%;
+  }  
+  
 body {
-    background-color:  rgb(189, 187, 187);  
+    background-color: rgb(228, 228, 228);
+    position: relative;
+    padding-bottom: 8vh;
+    padding-top: 1em; 
+    margin: 0; 
+    min-height: 100%;
+}     
+
+#profile-page-container {
+    position: relative; 
+    margin: 0 auto;
+    padding-top: 6vh; 
 }
- 
+  
 .navy-background {
     background-color: rgb(0, 63, 98); 
 }   
@@ -27,21 +42,42 @@ body {
     font-family: 'Sura', serif;
 } 
 
+.grey-background {
+    background-color:  rgb(214, 209, 209); 
+}
+
 /* Body Styling */
 
-/* Navbar Styling */
+input {
+    font-weight: bolder; 
+    text-align: center; 
+}
+
+/* Navbar */
 
 .navbar {   
-    font-size: 3vw;
-    height: 12vh; 
+    font-size: 1.5vw;
+    height: 5.5vh; 
 }
 
 #user-header {
-    font-size: 4vw; 
+    font-size: 3vw; 
+}
+
+#user-header:hover {
+    color:white;
 }
 
 #user-image {
-    height: 10vh; 
+    height: 5vh; 
+}
+
+#profile-top-btn {
+    height: 5vh;
+}
+
+#calendar-top-btn {
+    height: 5vh;
 }
  
 #profile-top-btn:hover {
@@ -49,29 +85,20 @@ body {
 } 
 
 #calendar-top-btn:hover {
-    background-color: rgb(126, 83, 4);; 
-}
-
-#user-options {
-    height: 2.1vw; 
-    font-size: 1.5vw; 
-    display: flex; 
-    align-items: center; 
+    background-color: rgb(126, 83, 4);
 }
 
 #nav-h1 {
     display: none; 
-    font-size: 7vw; 
+    font-size: 4vw; 
 }
 
 /* Content Styling */
 
-#main-content {     
-    margin-top: 13vh; 
-}
+/* Header styling */
  
 #top-profile-column {
-    height: 20vh; 
+    height: 15vh; 
     background:white; 
 }  
 
@@ -82,32 +109,54 @@ body {
     z-index: 1
 } 
 
-#profile-information-section {
-    background:white; 
-}
-
 #top-profile-content {
     position: relative; 
     bottom: 75%;
-    left: 33%; 
+    left: 35%; 
     z-index: 2; 
     font-size: 2.5vw; 
 }
 
 #top-profile-content h1 {
-    font-size: 3.5vw; 
+    font-size: 3vw; 
+}
+ 
+/* Main Section */
+
+#main-profile-section h1 {
+    font-size: 2.5vw; 
 }
 
+#summary-div {
+    background:white; 
+}
+
+.profile-section-header {
+    font-size: 3vw; 
+}
+
+.summary-li {
+    font-size: 1.2vw; 
+}
+
+#profile-map {
+   width: 30vw; ;    
+}
+
+.content-font-size {
+    font-size: 1.5vw; 
+}
 
 /* Footer Styling */
 
 footer {
     position: absolute; 
-    bottom: 0;
+    bottom: 0; 
+    height: 8.2vh; 
 }
 
 #footer-label {
-    font-size: 2vw; 
+    font-size: 1.74vw; 
 }  
 
 .footer-content {
@@ -117,10 +166,29 @@ footer {
 
 /* Media Queries */
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 1440px) {
+    #footer-label {
+        font-size: 2vw; 
+    }
     
-    #nav-h1 {
-        display: block; 
+    .footer-content {
+        font-size: 1vw; 
+    }  
+
+    footer {
+        height: 8vh; 
+    }
+
+    .summary-li {
+        font-size: 1.6vw; 
+    }
+    
+} 
+
+@media screen and (max-width: 992px) {
+    
+    #main-profile-section h1 {
+        font-size: 3vw; 
     }
 
     #footer-label {
@@ -131,22 +199,93 @@ footer {
         font-size: 1.5vw; 
     }
 
-    #top-profile-content {
-        left: 20%; 
-        font-size: 4.5vw; 
+    footer {
+        height: 8vh; 
     }
 
-    #top-profile-content h1 {
-        font-size: 4.5vw; 
+    #top-profile-content {
+        left: 30%; 
+    }
+    
+    .content-font-size {
+        font-size: 2vw; 
+    }
+      
+
+    .summary-li {
+        font-size: 2.5vw; 
+    }    
+
+}   
+
+@media screen and (max-width: 600px) {
+      
+    #nav-h1 {
+        display: block;
+        font-size: 6vw;  
+    }
+
+    #top-profile-content {
+        left: 10%; 
+        font-size: 5vw; 
     } 
-   
+
+    #top-profile-content h1 {
+        font-size: 7vw; 
+    } 
+
+    #main-profile-section h1 {
+        font-size: 7vw; 
+    }
+
     #footer-label {
         font-size: 4vw; 
-    } 
+    }  
 
     .footer-content {
         font-size: 3vw; 
-        color: white; 
+    }
+
+    .summary-li {
+        font-size: 4vw; 
+    }
+ 
+    .navbar-nav {
+        flex-direction: row; 
+        align-items: center;
+    }
+
+    #profile-map {
+        width: 60vw; ;    
+     }  
+
+    #navbarNavAltMarkup { 
+        background-color: white; 
+        border-radius: 1%;      
+    } 
+
+    #profile-top-btn, #calendar-top-btn { 
+        width: 50%; 
+        justify-content: center;
+        font-size: 5vw; 
+        background-color: rgb(0, 63, 98); 
+    }
+
+    .content-font-size {
+        font-size: 3vw; 
+    }
+      
+ 
+    #user-header {
+        font-size: 5vw; 
+    }
+
+    #user-header:hover {
+        color: rgb(0, 63, 98); 
+    }
+    
+    .navbar-toggler {
+        padding: 0; 
     }
 
 }
