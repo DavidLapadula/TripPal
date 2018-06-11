@@ -3,7 +3,7 @@ html {
     height: 100%;
   }   
   
-body {
+body { 
     background-color: rgb(228, 228, 228);
     position: relative;
     padding-bottom: 8vh;
@@ -46,6 +46,11 @@ body {
     background-color:  rgb(214, 209, 209); 
 }
 
+a { 
+    color: inherit; 
+}
+
+
 /* Body Styling */
 
 input {
@@ -78,7 +83,7 @@ input {
 
 #calendar-top-btn {
     height: 5vh;
-}
+} 
  
 #profile-top-btn:hover {
     background-color: rgb(126, 83, 4);
@@ -93,9 +98,6 @@ input {
     font-size: 4vw; 
 }
 
-/* Content Styling */
-
-/* Calendar */
 
 .section-header {
     font-size: 2vw; 

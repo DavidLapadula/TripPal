@@ -8,11 +8,11 @@ $(document).ready(function () {
         var nameInput = $('#name-input');
         var emailInput = $('#email-input');
         var passwordInput = $('#password-input');
-        var startdateInput = $('#start-date-input');
+        var startDateInput = $('#start-date-input');
         var endDateInput = $('#end-date-input');
         var cityInput = $('#city-input');
         var countryInput= $('#country-input');
-        var formSubmitButn= $('#form-submit-button');
+        var formSubmitBtn= $('#form-submit-button');
          
         //General Sign In
         var emailInputLogIn = $('#email-input-logIn'); 
@@ -31,7 +31,7 @@ $(document).ready(function () {
         var changeImage = function () {
             slideshowImages.animate({opacity: "0.5"}, 100)
             slideshowImages.animate({opacity: "1"}, 100)
-            slideshowImages.attr('src', `../assets/images/slideshow/${imageSource[slideshowIndex]}`); 
+            slideshowImages.attr('src', `assets/images/slideshow/${imageSource[slideshowIndex]}`); 
             slideshowIndex ++;  
             if (slideshowIndex > imageSource.length-1) {
                 slideshowIndex = 0;  
@@ -53,7 +53,7 @@ $(document).ready(function () {
         }
         if ( to_picker.get('value') ) {
         from_picker.set('max', to_picker.get('select'))
-        }
+        }  
 
         // When something is selected, update the “from” and “to” limits.
         from_picker.on('set', function(event) {
@@ -71,7 +71,13 @@ $(document).ready(function () {
         else if ( 'clear' in event ) {
         from_picker.set('max', false)
         }
-})
+});   
+   
+    
+        formSubmitBtn.click(function() {
+            startDateInput.val(); 
+            endDateInput.val(); 
+        }); 
     
 
 
