@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">       
-<head>          
+<head>           
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Main</title>                
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> <!-- Bootstrap used to design the layout-->
-    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Sura" rel="stylesheet">     <!-- Google Fonts -->  
-    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/index.css"/>  <!-- External Personal style sheet-->
-    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/classic.css"/>  <!-- External style sheet for picker-->
-    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/classic.date.css"/>  <!-- External style sheet for date picker-->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">     <!-- Favicon-->     
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Sura" rel="stylesheet">     <!-- Google Fonts -->   
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/index.css"/>  <!-- External Personal style sheet-->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/classic.css"/>  <!-- External style sheet for picker-->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/classic.date.css"/>  <!-- External style sheet for date picker-->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">     <!-- Favicon-->     
 </head>                         
 <body class="navy-background">           
     <div class="row justify-content-center" id="homepage-content">
         <div id="homepage-leftPhoto" class="col-lg-3 bg-white m-2 p-2 h-75 rounded">    
-            <img src="../assets/images/homePage-icon.jpg">  
-        </div> 
+            <img src="assets/images/homePage-icon.jpg">  
+        </div>  
         <div id="homepage-form" class="col-4 bg-white m-2 p-2">  
             <div class=" navy-background h-25 w-100 rounded tan-text header-font d-flex justify-content-center align-items-center">
                 <p class="m-0 p-0"> Trip Pal</p>
             </div>  
             <div id="submission-form" class="h-50 m-1"> 
                 <div class="h-100"> 
-                    <img id="slideshow-images" class="rounded" src="../assets/images/slideshow/main-travel.png">  
+                    <img id="slideshow-images" class="rounded" src="assets/images/slideshow/main-travel.png">  
                 </div> 
                 <!-- Modal For New User -->
                 <div id="myModal" class="modal" role="dialog">
@@ -144,7 +144,7 @@
                                         <input id="password-input-logIn" type="text" class="form-control h-50 navy-text" placeholder="Enter Password">
                                     </div>   
                                 </div>   
-                            </div>    
+                            </div>     
                             <div class="row w-100 m-0 text-center" id="submit-form-buttons"> 
                             </div>    
                         </div>
@@ -165,13 +165,14 @@
             </div> 
         </div>   
         <div id="homepage-rightPhoto" class="col-lg-3 bg-white m-2 p-2 h-75 rounded">
-            <img src="../assets/images/homePage-plan.jpg"> 
+            <img src="assets/images/homePage-plan.jpg"> 
         </div>  
     </div>    
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script> <!-- Moment.js to parse the dates-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!-- Link to jQuery library--> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script> <!-- Popper javascript for modal-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> <!-- Bootstrap min for modals-->
-    <script src="../assets/javascript/picker.js"></script> <!-- Main Picker javascript--> 
-    <script src="../assets/javascript/picker.date.js"></script> <!-- Picker javascript for the date-->     
-    <script src="../assets/javascript/index.js"></script> <!-- Link to personal external javascript file  --> 
+    <script src="assets/javascript/picker.js"></script> <!-- Pop up picker javascript--> 
+    <script src="assets/javascript/picker.date.js"></script> <!-- Pop up picker  javascript for the date-->      
+    <script src="assets/javascript/index.js"></script> <!-- Link to personal external javascript file  --> 
 </html>  
