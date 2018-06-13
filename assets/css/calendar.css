@@ -1,7 +1,7 @@
 /* Application Fonts and colors */
 html {
     height: 100%;
-  }   
+  }    
   
 body { 
     background-color: rgb(228, 228, 228);
@@ -10,7 +10,11 @@ body {
     padding-top: 1em; 
     margin: 0; 
     min-height: 100%;
-}      
+}    
+
+button {
+    cursor: pointer; 
+}
 
 #calendar-page-container {
     position: relative; 
@@ -56,6 +60,10 @@ a {
 input {
     font-weight: bolder; 
     text-align: center; 
+}
+
+.submit-form-special-header {
+    font-size: 1.2vw; 
 }
 
 /* Navbar */
@@ -167,7 +175,7 @@ footer {
     }
 
     .content-font-size {
-        font-size: 1.5vw; 
+        font-size: 1.2vw; 
     }
       
     
@@ -214,7 +222,7 @@ footer {
     #nav-h1 {
         display: block;
         font-size: 6vw;  
-    }
+    } 
 
     #top-profile-content {
         left: 10%; 

@@ -5,7 +5,7 @@ $(document).ready(function () {
     var removeSelectedDay = false; 
     var addDateActivity = false; 
     var associatedDate; 
-
+  
     //Calendar the map is attached to. Only worked with vanilla JS
     calendarPickDate = document.getElementById("calendar-pick-date");
 
@@ -13,6 +13,7 @@ $(document).ready(function () {
     removeDailyActivityBtn = $('#remove-daily-activity-btn'); 
     addActivityBtn = $('#add-activity-btn');
     removeActivityBtn = $('#remove-activity-btn');
+    uploadProfileBtn = $('#upload-profile-btn');
     
     //Modal For adding activities to the full list. Needed to use vanilla js in order to update the table properly
     addActivityInput = document.getElementById("add-activity-input");
@@ -63,8 +64,6 @@ $(document).ready(function () {
         associatedDate = moment(selectedDate).format('MMMM Do YYYY'); // one of the items that get's stored in the local storage value
         });  
 
-
-
     //When you click the add acitivity button, all other features are turned off and associated colors are as well
     addActivityBtn.click(function () {
         $('#full-activities-table tbody').removeClass();
@@ -78,6 +77,7 @@ $(document).ready(function () {
     
     // Button that adds row to the full list table. Allows the user to leave out data, but not submit a blank form
     addFullListBtn.click(function () {
+        event.preventDefault(); 
         if (addEventInput.value !== '') { //Allow user to not ignore some fields, but require at least an event in order to add it to the list
             addFullList();
         }
@@ -88,6 +88,7 @@ $(document).ready(function () {
 
     //Toggle that allows the user to delete a row from the full activities list. Changes the color to red.
     removeActivityBtn.click(function() {
+        event.preventDefault(); 
         $('#full-activities-table tbody').toggleClass("text-danger"); 
         //Allow user to remove a list and also allows for changing the active function after clicking the button multiple times 
         if (!removeFullList) {
@@ -126,12 +127,13 @@ $(document).ready(function () {
      
     //Toggle that changes the switch that allows the user to delete a row. Changes the color to red if the switch is on. 
     removeDailyActivityBtn.click(function() { 
+        event.preventDefault(); 
     $('#current-day-activities tbody').toggleClass("text-danger");
         if (!removeSelectedDay) {
              removeSelectedDay = true; 
         } else {
             removeSelectedDay = false; 
-        }  
+        }   
     });     
 
     //Allows the user to delete a row from the current day, only if the switch set by the button is on
@@ -141,8 +143,49 @@ $(document).ready(function () {
     }
     $('#current-day-activities tbody').removeClass("text-danger");
     removeSelectedDay = false; 
-    });  
+    });   
 
-  
+
+    //Function for querying search items
+    searchActivityBtn.click(function() {
+        event.preventDefault(); 
+        searchActivitiesUl.empty()
+        var search = $('#search-activities-input').val();   
+        var apiKEY = '2389b3d267eb4f7eb652b54ef0011326'; 
+        var queryURL = `https://newsapi.org/v2/everything?q=${search}&sortBy=relevancy&apiKey=${apiKEY}`; 
+        $.ajax({ 
+          url : queryURL, 
+          method: 'GET', 
+          dataType: 'json'
+        }).then(function(response){
+            if (search !== '') {
+                for (var i = 0; i < 5; i ++) {
+                    articleNum =  Math.floor(Math.random()* response.articles.length); 
+                    articleIndex = response.articles[articleNum]; 
+                    queryResult = $('<li>'); 
+                     $('<p>', { 
+                        text: articleIndex.description,
+                        class: 'mt-2 mr-0 ml-0 mb-0'
+                     }).appendTo(queryResult);
+                     $('<a>', { 
+                        href: articleIndex.url,
+                        text: 'Visit Article',
+                        target: '_blank',
+                        class: 'tan-text header-font'
+                     }).appendTo(queryResult);
+                     queryResult.appendTo(searchActivitiesUl); 
+                }
+            }
+        });  
+        searchActivitiesInput.val('').attr('placeholder', 'search something to do')
+      });
+
+      //Clear the search list
+      clearListBtn.click(function () {
+        event.preventDefault(); 
+        searchActivitiesUl.empty()
+        searchActivitiesInput.val('').attr('placeholder', 'search something to do')
+      }); 
+
 
 }); 

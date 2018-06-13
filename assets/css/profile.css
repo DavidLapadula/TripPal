@@ -46,6 +46,10 @@ body {
     background-color:  rgb(214, 209, 209); 
 }
 
+button {
+    cursor: pointer; 
+}
+
 /* Body Styling */
 
 input {
@@ -143,6 +147,10 @@ input {
 #nav-h1 {
     display: none; 
     font-size: 4vw; 
+}; 
+
+.submit-form-special-header {
+    font-size: 1.2vw; 
 }
 
 /* Content Styling */
@@ -196,6 +204,11 @@ input {
     font-size: 1vw; 
 }
 
+.submit-form-special-header {
+    font-size: 1.2vw; 
+}
+
+
 /* Footer Styling */
 
 footer {
@@ -231,13 +244,17 @@ footer {
     .summary-li {
         font-size: 1.6vw; 
     }
-    
-} 
+  
+    .profile-section-header {
+        font-size: 3vw; 
+    }
+       
+}   
 
 @media screen and (max-width: 992px) {
     
-    #main-profile-section h1 {
-        font-size: 3vw; 
+    .profile-section-header {
+        font-size: 4vw; 
     }
 
     #footer-label {

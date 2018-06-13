@@ -11,17 +11,19 @@ $(document).ready(function () {
     var userHeader = $('#user-header');  
     var changeStartDate = $('#change-start-date');   
     var changeEndDate = $('#change-end-date');  
-    var newLocationInput = $('#new-location-input');  
-    var changeInfoBtn = $('#change-info-btn');  
+    var changeCountryInput = $('#change-coutry-input');  
+    var changeCityInput = $('#change-city-input');  
+    var changeInfoBtn = $('#change-info-btn');    
     var destinationLabel = $('#destination-label');  
 
     //Navbar collapse function
     profileCollapseButton.click(function() {
+        event.preventDefault(); 
         var isAnimated = profileCollapseContent.hasClass('animated fadeInDown'); 
         !isAnimated ? profileCollapseContent.addClass('animated fadeInDown') : profileCollapseContent.removeClass('animated fadeInDown'); 
         });        
 
-    //Change the Date Modal     
+    //Change the Date Modal      
         //Date picker
         var from_$input = changeStartDate.pickadate(),
         from_picker = from_$input.pickadate('picker')
@@ -31,10 +33,12 @@ $(document).ready(function () {
 
     //Change the color of the button based on which page you have  
     profileTopBtn.click(function() {
+        event.preventDefault(); 
         profileTopBtn.addClass('tan-background').removeClass('navy-background'); 
         calendarTopBtn.addClass('navy-background').removeClass('tan-background'); 
     }); 
     calendarTopBtn.click(function() {
+        event.preventDefault(); 
         calendarTopBtn.addClass('tan-background').removeClass('navy-background'); 
         profileTopBtn.addClass('navy-background').removeClass('tan-background'); 
     }); 
