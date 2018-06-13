@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">  
-<head>   
+<head>      
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile</title>       
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> <!-- Bootstrap used to design the layout-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> <!-- Animate CSS--> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!-- Link to jQuery library--> 
+    <script type="text/javascript" src="assets/javascript/profile.js"></script> <!--Link to external javascript file for this specific page-->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/classic.css"/>  <!-- External style sheet for picker-->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/classic.date.css"/>  <!-- External style sheet for date picker-->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script> <!-- Moment.js-->
@@ -15,7 +17,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/profile.css"/>  <!-- External Personal style sheet-->
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">     <!-- Favicon-->    
 </head>              
-<body>    
+<body>        
   <!-- Navbar -->
   <nav id="navbar" class="navbar fixed-top navbar-expand-sm navy-background pt-2">
       <button class="navbar-toggler bg-light tan-background" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +39,7 @@
    <div id="profile-modal" class="modal text-center" role="dialog">
     <div class="modal-dialog modal-lg mt-2 d-flex justify-content-center">
         <!-- Modal content-->    
-        <div class="modal-content"> 
+        <div class="modal-content">  
             <div class="modal-header navy-background">
             <button type="button" class="bg-light tan-text rounded btn-lg m-2" data-dismiss="modal">X</button>
             <button id="log-out-btn" type="button" class="bg-light tan-text rounded btn-lg m-2 font-weight-bold">Log Out</button>
@@ -66,11 +68,22 @@
                 <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row"> 
                     <div class="col-12">
                         <h1 class="tan-text header-font submit-form-headers">Change Location</h1>
+                    </div>     
+                    <div class="col-md-2"> 
+                        <h1 class="navy-text submit-form-special-header content-font">Country</h1>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input id="change-coutry-input" type="text" class="form-control navy-text" placeholder="Enter Country Here">
+                        </div>
+                    </div>   
+                    <div class="col-md-2">
+                        <h1 class="navy-text submit-form-special-header content-font">City</h1>
                     </div> 
-                    <div class="col-12"> 
-                        <div class="input-group ">
-                            <input id="new-location-input" type="text" class="form-control navy-text mt-1 mb-1" placeholder="New Location">
-                        </div> 
+                    <div class="col-md-4"> 
+                        <div class="input-group navy-text">
+                            <input id="change-city-input" type="text" class="form-control navy-text" placeholder="Enter City here">
+                        </div>
                     </div>  
                 </div>  
             </div>
@@ -90,19 +103,19 @@
           <h1 id="destination-label" class="d-inline m-2 navy-text content-font font-weight-bold">Destination</h1>
       </div>  
     </div>           
-    <div id="main-profile-section" class="col-10 rounded mt-2">
-        <div class="col-xl-5 col-lg-8 m-auto navy-background rounded text-center"> 
-            <h1 class="text-light header-font d-inline mr-3">Current Temp:</h1>
-            <h1 id="current-temp-div" class="d-inline text-light">32</h1>
-            <h1 class="text-light d-inline p-0 m-0">&#8451</h1>
+    <div id="main-profile-section" class=" col-xl-10 col-md-12 rounded mt-2">
+        <div class="col-xl-5 col-lg-8 col-sm-10 m-auto navy-background rounded text-center d-flex align-items-center justify-content-center"> 
+            <h1 class="text-light header-font d-inline mr-3 profile-section-header">Current Temp:</h1>
+            <h1 id="current-temp-div" class="d-inline text-light profile-section-header">32</h1>
+            <h1 class="text-light d-inline p-0 m-0 profile-section-header">&#8451</h1>
         </div>  
         <div class="row d-flex justify-content-center mt-4">  
-          <div id="summary-div" class="col-lg-5 rounded m-1 pb-1">
+          <div id="summary-div" class="col-lg-5 col-sm-10 rounded m-1 pb-1">
             <div class="row justify-content-center"> 
                 <h1 class="tan-text header-font d-inline profile-section-header">Trip Summary</h1>
             </div>    
             <div class="row m-auto rounded" id="summary-content"> 
-              <div class="col-12 grey-background">
+              <div class="col-md-12 grey-background">
                 <h1 class="header-font tan-text mb-0 profile-section-header">Dates</h1>
                 <span class="mb-1 summary-li content-font navy-font">
                   <p class="d-inline font-weight-bold">Start - </p>
@@ -118,13 +131,13 @@
                 <div class="navy-text rounded mt-2">
                     <div class="table-responsive content-font-size">
                         <table id="profile-page-activities" class="table table-bordered table-hover">
-                            <thead>     
-                            <tr>
+                            <thead>          
+                            <tr>    
                                 <th>Category</th>
                                 <th>Event</th> 
                                 <th>Date</th>
                             </tr> 
-                            </thead>
+                            </thead>    
                             <tbody>
                             <tr>  
                                 <td>Food</td>
@@ -136,18 +149,18 @@
                     </div>
                 </div>   
               </div>    
-            </div>              
+            </div>                 
           </div>       
-          <div id="map-div" class="col-lg-5 col-md-12 rounded m-1 d-flex align-items-center justify-content-center"> 
-            <div class="row pl-4 pr-4 bg-light rounded">
-                <div class="col-12 text-center"> 
+          <div id="map-div" class="col-lg-5 col-sm-10 rounded m-1 d-flex align-items-center justify-content-center"> 
+            <div class="row pl-4 pr-4 bg-white rounded ">
+                <div class="col-12 text-center">  
                     <h1 class="navy-text header-font profile-section-header">Location</h1>
                 </div>  
                 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                 <div id="profile-map" class="rounded text-center col-12 mb-2 bg-light container-fluid"> 
                 </div> 
             </div> 
-          </div>  
+          </div>   
         </div>      
       </div>   
   </div>            
@@ -158,81 +171,11 @@
       <p class="mb-1 footer-content"> hAckeDD Development Team: Derek, Angelina, and David</p>
     </div>      
   </footer>   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!-- Link to jQuery library--> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script> <!-- Popper javascript for modal-->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> <!-- Bootstrap min for modals-->
   <script src="assets/javascript/picker.js"></script> <!-- Main Picker javascript-->  
-  <script src="assets/javascript/picker.date.js"></script> <!-- Picker javascript for the date-->      
+  <script src="assets/javascript/picker.date.js"></script> <!-- Picker javascript for the date-->         
   <script src="assets/javascript/user.js"></script> <!--Link to external javascript file for the general user information-->
-  <script src="assets/javascript/profile.js"></script> <!--Link to external javascript file for this specific page-->
-  <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=weather&key=AIzaSyDJnwJ5IjKuOMP2uJoGLwyL67ksZl61v44&libraries=places&callback=initAutocomplete" async defer></script> 
-  <script> 
-            function initAutocomplete() {
-          var map = new google.maps.Map(document.getElementById('profile-map'), {
-            center: {lat: 0, lng: 0},
-            zoom: 1,
-            mapTypeId: 'roadmap' 
-          }); 
-    
-          // Create the search box and link it to the UI element.
-          var input = document.getElementById('pac-input');
-          var searchBox = new google.maps.places.SearchBox(input);
-          map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-  
-          // Bias the SearchBox results towards current map's viewport.
-          map.addListener('bounds_changed', function() {
-            searchBox.setBounds(map.getBounds());
-          });  
-   
-          var markers = [];
-          // Listen for the event fired when the user selects a prediction and retrieve
-          // more details for that place.
-          searchBox.addListener('places_changed', function() {
-            var places = searchBox.getPlaces();
-  
-            if (places.length == 0) {
-              return;
-            }  
-  
-            // Clear out the old markers.
-            markers.forEach(function(marker) {
-              marker.setMap(null);
-            }); 
-            markers = [];
-  
-            // For each place, get the icon, name and location.
-            var bounds = new google.maps.LatLngBounds();
-            places.forEach(function(place) {
-              if (!place.geometry) {
-                console.log("Returned place contains no geometry");
-                return;
-              }
-              var icon = {
-                url: place.icon,
-                size: new google.maps.Size(71, 71),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(17, 34),
-                scaledSize: new google.maps.Size(25, 25)
-              };
-  
-              // Create a marker for each place.
-              markers.push(new google.maps.Marker({
-                map: map,
-                icon: icon,
-                title: place.name,
-                position: place.geometry.location
-              }));
-  
-              if (place.geometry.viewport) {
-                // Only geocodes have viewport.
-                bounds.union(place.geometry.viewport);
-              } else {
-                bounds.extend(place.geometry.location);
-              }
-            });
-            map.fitBounds(bounds);
-          });
-        }
-  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=weather&key=AIzaSyDJnwJ5IjKuOMP2uJoGLwyL67ksZl61v44&libraries=places" async defer></script> 
 </body>
 </html>  

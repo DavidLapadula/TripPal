@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    
-    //Selectors
+         
+    //Selectors   
 
         var slideshowImages = $('#slideshow-images');
         
@@ -75,6 +75,7 @@ $(document).ready(function () {
    
     
         formSubmitBtn.click(function() {
+            event.preventDefault(); 
             startDateInput.val(); 
             endDateInput.val(); 
         }); 

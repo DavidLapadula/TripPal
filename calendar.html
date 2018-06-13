@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">  
+<html lang="en">   
 <head>     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/calendar.css"/>  <!-- External style sheet for custom design-->
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">     <!-- Favicon-->  
 </head>                 
-<body>    
+<body>         
   <!-- Navbar -->
   <nav id="navbar" class="navbar fixed-top navbar-expand-sm navy-background pt-2">
       <button class="navbar-toggler bg-light tan-background" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,9 +35,9 @@
               <img class="bg-light rounded d-inline m-2" id="user-image" src="assets/images/placeholder.png">
               <h1 id="user-header" class="header-font tan-text d-inline m-2" data-toggle="modal" data-target="#profile-modal"> Random User</h1>
           </div>    
-        </div>       
-      </div>                   
-  </nav>    
+        </div>        
+      </div>                      
+  </nav>     
     <!-- Profile Altering Modal-->
     <div id="profile-modal" class="modal text-center" role="dialog">
       <div class="modal-dialog modal-lg mt-2 d-flex justify-content-center">
@@ -46,8 +46,17 @@
               <div class="modal-header navy-background">
               <button type="button" class="bg-light tan-text rounded btn-lg m-2" data-dismiss="modal">X</button>
               <button id="log-out-btn" type="button" class="bg-light tan-text rounded btn-lg m-2 font-weight-bold">Log Out</button>
-              </div>   
+              </div>      
               <div class="modal-body">
+                    <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row border-bottom pb-4 mb-2"> 
+                        <div class="col-12">
+                            <h1 class="tan-text header-font submit-form-headers">Profile Picture</h1>
+                        </div>      
+                        <div class="col-12"> 
+                            </div>
+                            <button id="upload-profile-btn" type="button" class="btn btn-secondary">Secondary</button>
+                        </div>  
+                    </div>  
                   <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row"> 
                       <div class="col-12">
                           <h1 class="tan-text header-font submit-form-headers">Change Start Date</h1>
@@ -57,7 +66,7 @@
                               <input id="change-start-date" type="text" class="form-control navy-text mt-1 mb-1" placeholder="New Start Date">
                           </div> 
                       </div>   
-                  </div>  
+                  </div>     
                   <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row"> 
                       <div class="col-12">
                           <h1 class="tan-text header-font submit-form-headers">Change End Date</h1>
@@ -66,17 +75,28 @@
                           <div class="input-group ">
                               <input id="change-end-date" type="text" class="form-control navy-text mt-1 mb-1" placeholder="New End Date">
                           </div> 
-                      </div>   
+                      </div>    
                   </div>  
-                  <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row"> 
+                  <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row">   
                       <div class="col-12">
-                          <h1 class="tan-text header-font submit-form-headers">Change Location</h1>
-                      </div>   
-                      <div class="col-12"> 
-                          <div class="input-group ">
-                              <input id="new-location-input" type="text" class="form-control navy-text mt-1 mb-1" placeholder="New Location">
-                          </div> 
-                      </div>  
+                        <h1 class="tan-text header-font submit-form-headers">Change Location</h1>
+                    </div>     
+                    <div class="col-md-2"> 
+                        <h1 class="navy-text submit-form-special-header content-font">Country</h1>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input id="change-coutry-input" type="text" class="form-control navy-text" placeholder="Enter Country Here">
+                        </div>
+                    </div>   
+                    <div class="col-md-2">
+                        <h1 class="navy-text submit-form-special-header content-font">City</h1>
+                    </div> 
+                    <div class="col-md-4"> 
+                        <div class="input-group navy-text">
+                            <input id="change-city-input" type="text" class="form-control navy-text" placeholder="Enter City here">
+                        </div>
+                    </div>
                   </div>  
               </div>
               <div class="modal-footer d-flex justify-content-center">
@@ -111,17 +131,17 @@
                       <div class="input-group ">
                           <input id="add-event-input" type="text" class="form-control navy-text mt-1 mb-1" placeholder="Description">
                       </div> 
-                  </div>   
+                  </div>     
               </div>      
               <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row"> 
                 <div class="col-12">
                     <h1 class="tan-text header-font submit-form-headers">URL</h1>
-                </div>  
+                </div>    
                 <div class="col-12"> 
                     <div class="input-group ">
                         <input id="add-url-input" type="text" class="form-control navy-text mt-1 mb-1  submit-form-headers" placeholder="Enter URL for activity">
                     </div> 
-                </div>  
+                </div>   
             </div>    
           </div>
           <div class="modal-footer d-flex justify-content-center">
@@ -141,7 +161,7 @@
         </div>
     </div>       
   </div>  
-  <div class="row justify-content-center">
+  <div class="row justify-content-center pl-5 pr-4 pt-3">
       <div class="col-lg-4 col-sm-8 col-xs-8 m-2">
         <div class="row bg-light justify-content-center align-items-center">
             <h1 class="section-header navy-text header-font header-font-size"> Pick a Date </h1>
@@ -154,7 +174,7 @@
                     <button id="remove-daily-activity-btn" class="navy-background rounded text-light p-1">Remove</button>
                 </div> 
                 <div class="grey-background navy-text rounded mt-2 content-font-size w-100">
-                    <div class="table-responsive">
+                    <div class="table-responsive content-font-size">
                         <table id="current-day-activities" class="table table-bordered table-hover">
                             <thead>
                             <tr>  
@@ -162,7 +182,7 @@
                                 <th>Event</th> 
                             </tr> 
                             </thead>
-                            <tbody> 
+                            <tbody>  
                             <tr></tr>
                             <tr>
                                 <td>Food</td>
@@ -171,7 +191,7 @@
                             </tbody>
                         </table> 
                     </div>
-                </div>  
+                </div>   
             </div> 
       </div>
       <div class="col-lg-4 col-sm-8 m-2">
@@ -182,7 +202,7 @@
                 <button id="remove-activity-btn" class="d-inline navy-background rounded text-light p-1">Remove</button>
               </div> 
               <div class="grey-background navy-text rounded mt-2 content-font-size w-100">
-                <div class="table-responsive">
+                <div class="table-responsive content-font-size">
                     <table id="full-activities-table" class="table table-bordered table-hover">
                         <thead> 
                         <tr>
@@ -199,20 +219,18 @@
                     </table>
                 </div>
             </div>  
-          </div>
+          </div> 
       </div> 
       <div class="col-lg-3 col-sm-8 m-2 text-center">
         <div class="col-12 bg-light justify-content-center rounded p-1 mb-2">
-            <h1 class="section-header header-font tan-text d-block mr-1 mb-0">Search</h1>
+            <h1 class="section-header header-font tan-text d-block mr-1 mb-0">News</h1>
             <div class="col-12 justify-content-center"> 
               <button id="search-activity-btn" class="d-inline navy-background rounded text-light p-1">Search</button>
               <button id="clear-list-btn" class="d-inline navy-background rounded text-light p-1">Clear</button>
               <input id="search-activities-input" type="text" class="form-control navy-text mt-1 mb-1 text-center" placeholder="search something to do">
             </div>
             <div class="grey-background text-left m-3 rounded content-font-size">
-                <ul id="search-activities-ul" class="navy-text content-font">
-                    <li>Dancing at the holiday in </li>
-                    <li>Casino downtown </li> 
+                <ul id="search-activities-ul" class="navy-text content-font content-font-size">
                 </ul> 
             </div> 
         </div>
@@ -223,7 +241,7 @@
     <div class="footer-copyright text-center"> 
       <p class="mb-1 footer-content">Copyright <i class="fas fa-copyright"></i> 2018</p>
       <p class="mb-1 footer-content"> hAckeDD Development Team: Derek, Angelina, and David</p>
-    </div>   
+    </div>    
   </footer>  
   <script src="assets/javascript/picker.js"></script> <!-- Main Picker javascript--> 
   <script src="assets/javascript/picker.date.js"></script> <!-- Picker javascript for the date-->    
