@@ -37,7 +37,7 @@ button {
 .tan-background {
     background-color: rgb(126, 83, 4); 
 } 
- 
+  
 .header-font {
     font-family: 'Luckiest Guy', cursive;
 } 
@@ -106,7 +106,7 @@ input {
     font-size: 4vw; 
 }
 
-
+ 
 .section-header {
     font-size: 2vw; 
 } 
@@ -187,6 +187,11 @@ footer {
         height: 8vh; 
     }
 
+    .submit-form-special-header {
+        font-size: 2vw; 
+    }
+       
+
 } 
 
 @media screen and (max-width: 992px) {
@@ -215,6 +220,10 @@ footer {
         left: 30%; 
     }
 
+    .submit-form-special-header {
+        font-size: 2.1vw; 
+    }
+ 
 }   
 
 @media screen and (max-width: 600px) {
@@ -282,6 +291,10 @@ footer {
 
     .col-sm-8 {
         width:90%; 
+    }
+
+    .submit-form-special-header {
+        font-size: 4vw; 
     }
 
 }

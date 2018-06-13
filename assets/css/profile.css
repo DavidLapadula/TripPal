@@ -248,7 +248,11 @@ footer {
     .profile-section-header {
         font-size: 3vw; 
     }
-       
+
+    .submit-form-special-header {
+        font-size: 2vw; 
+    }
+        
 }   
 
 @media screen and (max-width: 992px) {
@@ -289,6 +293,10 @@ footer {
       #profile-map {
         width: 60vw; 
      }
+
+     .submit-form-special-header {
+        font-size: 2.1vw; 
+    }
 
 }   
 
@@ -365,6 +373,10 @@ footer {
     #pac-input {
         width: 40vw;
       }
+
+    .submit-form-special-header {
+        font-size: 4vw; 
+    }
 
 
 }
