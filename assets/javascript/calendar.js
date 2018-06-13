@@ -179,13 +179,14 @@ $(document).ready(function () {
         });  
         searchActivitiesInput.val('').attr('placeholder', 'search something to do')
       });
-
+ 
       //Clear the search list
       clearListBtn.click(function () {
         event.preventDefault(); 
         searchActivitiesUl.empty()
         searchActivitiesInput.val('').attr('placeholder', 'search something to do')
       }); 
+
 
 
 }); 

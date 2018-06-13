@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/profile.css"/>  <!-- External Personal style sheet-->
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">     <!-- Favicon-->    
 </head>              
-<body>        
+<body>          
   <!-- Navbar -->
   <nav id="navbar" class="navbar fixed-top navbar-expand-sm navy-background pt-2">
       <button class="navbar-toggler bg-light tan-background" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
               <img class="bg-light rounded d-inline m-2" id="user-image" src="assets/images/placeholder.png">
                 <h1 id="user-header" class="header-font tan-text d-inline m-2" data-toggle="modal" data-target="#profile-modal"> Random User</h1>
             </div>   
-        </div>       
+        </div>         
       </div>                    
   </nav>   
    <!-- Profile Altering Modal-->
@@ -45,6 +45,23 @@
             <button id="log-out-btn" type="button" class="bg-light tan-text rounded btn-lg m-2 font-weight-bold">Log Out</button>
             </div>     
             <div class="modal-body">
+                <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row">
+                    <div class="col-12 d-flex justify-content-center align-items-center">
+                        <h1 class="tan-text header-font submit-form-headers d-inline mr-3">Profile Picture</h1>
+                        <button id="submit-profile-pic-btn" class="btn navy-background text-white  m-1" type="submit">Submit</button>
+                    </div>
+                    <div class="col-12"> 
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <button id="clear-file-input" class="btn btn-outline-secondary tan-background text-white" type="button">Clear</button>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="profile-pic-input">
+                                <label class="custom-file-label" for="profile-pic-input">Choose file</label>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
                 <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row"> 
                     <div class="col-12">
                         <h1 class="tan-text header-font submit-form-headers">Change Start Date</h1>
