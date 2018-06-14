@@ -46,15 +46,15 @@ body {
     background-color:  rgb(214, 209, 209); 
 }
 
-button {
-    cursor: pointer; 
-}
-
 /* Body Styling */
 
 input {
     font-weight: bolder; 
     text-align: center; 
+}
+
+button {
+    cursor: pointer; 
 }
 
 /* Styling for the map */
@@ -147,7 +147,7 @@ input {
 #nav-h1 {
     display: none; 
     font-size: 4vw; 
-}; 
+}
 
 .submit-form-special-header {
     font-size: 1.2vw; 
@@ -208,7 +208,6 @@ input {
     font-size: 1.2vw; 
 }
 
-
 /* Footer Styling */
 
 footer {
@@ -244,7 +243,8 @@ footer {
     .summary-li {
         font-size: 1.6vw; 
     }
-  
+
+      
     .profile-section-header {
         font-size: 3vw; 
     }
@@ -252,8 +252,8 @@ footer {
     .submit-form-special-header {
         font-size: 2vw; 
     }
-        
-}   
+    
+} 
 
 @media screen and (max-width: 992px) {
     
@@ -296,7 +296,7 @@ footer {
 
      .submit-form-special-header {
         font-size: 2.1vw; 
-    }
+     }
 
 }   
 
@@ -374,7 +374,7 @@ footer {
         width: 40vw;
       }
 
-    .submit-form-special-header {
+      .submit-form-special-header {
         font-size: 4vw; 
     }
 

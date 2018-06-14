@@ -1,112 +1,105 @@
-$(document).ready(function () {
- 
-    //Selectors
-        //Display the current temperature
-        currentTempDiv = $('#current-temp-div'); 
-        var destinationLat; 
-        var destinationLon;  
- 
-        //Display the duration of the trip
-        startDateProfile = $('#start-date-profile');
-        endDateProfile = $('#end-date-profile');
- 
-        //Table for displaying the homepage activities list
-        profilePageActivities = $('#profile-page-activities');
- 
-        //Google map display on the profile page
-        profileMap = $('#profile-map'); 
-        
-        // variables to display the weather of the city the user is currently in
-        var userCity; 
-        var userCountry;       
-
-        //function for updating the Weather.
-        var getWeather = function(city) {
-            var APIKEY = '&appid=74adba7da79a4c943ca3b1bec036d74d'; 
-            var queryURL = `https://api.openweathermap.org/data/2.5/weather?&units=metric&q=${city}${APIKEY}`; 
-            $.ajax({
-              url : queryURL, 
-              method: 'Get'
-            }).then(function(response){
-              currentTempDiv.text(response.main.temp.toFixed());
-              destinationLat = response.coord.lat; 
-              destinationLon = response.coord.lon;  
-              initAutocomplete(destinationLat, destinationLon);  
-            });       
-        };
-        getWeather('montreal'); //used this to test that the API call works. We can populate this with the user's location
+import { database } from "./userlogin.js"; // import the file
+export { PopulateSummaryTable, addRowToSummaryTable };
+   
     
-});      
-
-function initAutocomplete(latitude, longitude) {
-  var map = new google.maps.Map(document.getElementById('profile-map'), {
-    center: {lat: latitude, lng: longitude},
-    zoom: 13,
-    mapTypeId: 'roadmap' 
-  }); 
-
-  // Create the search box and link it to the UI element.
-  var input = document.getElementById('pac-input');
-  var searchBox = new google.maps.places.SearchBox(input);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-  // Bias the SearchBox results towards current map's viewport.
-  map.addListener('bounds_changed', function() {
-    searchBox.setBounds(map.getBounds());
-  });  
-
-  var position = {lat: latitude, lng: longitude}; 
+var currentTempDiv = null;
+var startDateProfile = null; 
+var endDateProfile = null;
+var assignedDateSummaryTable = null; 
+var profileMap = null;
+var changeInfoBtn = null; 
+ 
+$(document).ready(function () {
   
-  var markers = new google.maps.Marker({
-    position: position, 
-    map: map, 
-    title: 'You are here'
-  }); 
-  // Listen for the event fired when the user selects a prediction and retrieve
-  // more details for that place.
-  searchBox.addListener('places_changed', function() {
-    var places = searchBox.getPlaces();
+  //Selectors
+  //Display the current temperature
+  currentTempDiv = $('#current-temp-div');
 
-    if (places.length == 0) {
-      return; 
+  //Display the duration of the trip
+  startDateProfile = $('#start-date-profile');
+  endDateProfile = $('#end-date-profile');
+
+  //Table for displaying the homepage activities list
+  assignedDateSummaryTable = document.getElementById("profile-page-activities");
+ 
+  //Google map display on the profile page
+  profileMap = $('#profile-map');
+  var destinationLat;
+  var destinationLon;
+ 
+
+});
+
+
+// Populate the profile page with the full list of assigned activities
+// June 12: This may not need to be a promise, since the resolve doesn't return anything?
+function PopulateSummaryTable(listOfItems) {
+
+    // https://stackoverflow.com/questions/48240858/how-to-sort-array-of-object-by-key
+  // Sort the array of objects by the date that the user wants to do them
+  listOfItems.sort((a,b) => b.assignedDate < a.assignedDate ? 1 : -1);
+
+  return new Promise((resolve, reject) => {
+
+    // I'll probably have to clear the existing table data before updating it
+    // Then I'll have to loop for each object in the listOfItems
+
+    console.log('running PopulateSummaryTable');
+    //console.log(listOfItems);
+
+    // loop through all of the items and add them to the table
+    // item refers to the Firebase key for the activity entry
+    // June 12 To Do: sort the list of items by date before outputting to the screen
+    for (var item in listOfItems) {
+      //console.log('building info to add row for index: ' + item);
+      var rowInfoToPass = {};
+      rowInfoToPass['category'] = listOfItems[item].category;
+      rowInfoToPass['description'] = listOfItems[item].description;
+      rowInfoToPass['url'] = listOfItems[item].url;
+      rowInfoToPass['assignedDate'] = listOfItems[item].assignedDate;
+
+      //rowInfoToPass['dbref'] = item; // note necessary on the summary table
+      //console.log(rowInfoToPass);
+      addRowToSummaryTable(rowInfoToPass);
     }  
 
-    // Clear out the old markers.
-    markers.forEach(function(marker) {
-      marker.setMap(null);
-    }); 
-    markers = [];
-
-    // For each place, get the icon, name and location.
-    var bounds = new google.maps.LatLngBounds();
-    places.forEach(function(place) {
-      if (!place.geometry) {
-        console.log("Returned place contains no geometry");
-        return;
-      }
-      var icon = {   
-        url: place.icon,
-        size: new google.maps.Size(71, 71),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(25, 25)
-      };
-
-      // Create a marker for each place.
-      markers.push(new google.maps.Marker({
-        map: map,
-        icon: icon,
-        title: place.name,
-        position: place.geometry.location
-      }));
-
-      if (place.geometry.viewport) {
-        // Only geocodes have viewport.
-        bounds.union(place.geometry.viewport);
-      } else {
-        bounds.extend(place.geometry.location);
-      }
-    });
-    map.fitBounds(bounds);
+    resolve();
   });
-}
+};
+
+ 
+/* Add an item to the summary of assigned items
+ takes an object with the following parameters:
+  Assigned Date
+  Category
+  Description
+  URL
+*/
+var addRowToSummaryTable = function (rowInfo) {
+
+  console.log('running addRowToSummaryTable: ' + rowInfo.description);
+
+  var row = assignedDateSummaryTable.insertRow();
+  row.className = 'dynamic-row';
+  //row.setAttribute('dbref',rowInfo.dbref); // Not necessary on the profile page
+
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2); 
+
+  cell1.innerHTML = rowInfo.category;
+
+  var newEventTd = document.createElement('p'); //Append a paragraph to the <td> element and add a hyperlink if a URL is included
+  if (rowInfo.url !== '') {
+    var newanchor = document.createElement('a')
+    newanchor.setAttribute('target', '_blank')
+    newanchor.setAttribute('href', rowInfo.url);
+    newanchor.text = rowInfo.description;
+    newEventTd.appendChild(newanchor);
+  } else {
+    newEventTd.innerHTML = rowInfo.description;
+  }
+  cell2.appendChild(newEventTd);
+
+  cell3.innerHTML = rowInfo.assignedDate;
+};  
