@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Calendar</title>
+    <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
     <!-- Bootstrap used to design the layout-->
@@ -18,7 +19,7 @@
     <!-- Popper javascript for modal-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
-    <!-- Bootstrap min for modals--> 
+    <!-- Bootstrap min for modals-->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/classic.css" />
     <!-- External style sheet for pop up picker-->
     <link rel="stylesheet" href="build/kalendae.css" type="text/css" charset="utf-8">
@@ -56,10 +57,10 @@
                 <a id="calendar-top-btn" class="nav-item nav-link text-light content-font border rounded m-1 d-flex align-items-center" href="#">Calendar</a>
                 <div class="d-flex align-items-center ml-auto">
                     <img class="bg-light rounded d-inline m-2" id="user-image" src="assets/images/placeholder.png">
-                    <h1 id="user-header" class="header-font tan-text d-inline m-2" data-toggle="modal" data-target="#profile-modal"> Random User</h1>
+                    <h1 id="user-header" class="header-font tan-text d-inline m-2" data-toggle="modal" data-target="#profile-modal"></h1>
                 </div>
             </div>
-        </div> 
+        </div>
     </nav>
     <!-- Profile Altering Modal-->
     <div id="profile-modal" class="modal text-center" role="dialog">
@@ -69,25 +70,8 @@
                 <div class="modal-header navy-background">
                     <button type="button" class="bg-light tan-text rounded btn-lg m-2" data-dismiss="modal">X</button>
                     <button id="log-out-btn" type="button" class="bg-light tan-text rounded btn-lg m-2 font-weight-bold">Log Out</button>
-                </div>
+                </div>  
                 <div class="modal-body">
-                    <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row">
-                        <div class="col-12 d-flex justify-content-center align-items-center">
-                            <h1 class="tan-text header-font submit-form-headers d-inline mr-3">Profile Picture</h1>
-                            <button id="submit-profile-pic-btn" class="btn navy-background text-white  m-1" type="submit">Submit</button>
-                        </div>
-                        <div class="col-12"> 
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <button id="clear-file-input" class="btn btn-outline-secondary tan-background text-white" type="button">Clear</button>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="profile-pic-input">
-                                    <label class="custom-file-label" for="profile-pic-input">Choose file</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row">
                         <div class="col-12">
                             <h1 class="tan-text header-font submit-form-headers">Change Start Date</h1>
@@ -109,29 +93,29 @@
                         </div>
                     </div>
                     <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row">
-                        <div class="col-12">
-                            <h1 class="tan-text header-font submit-form-headers">Change Location</h1>
-                        </div>
-                        <div class="col-md-2">
-                            <h1 class="navy-text submit-form-special-header content-font">Country</h1>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <input id="change-coutry-input" type="text" class="form-control navy-text" placeholder="Enter Country Here">
+                            <div class="col-12">
+                                <h1 class="tan-text header-font submit-form-headers">Change Location</h1>
+                            </div>
+                            <div class="col-md-2">
+                                <h1 class="navy-text submit-form-special-header content-font">Country</h1>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <input id="change-coutry-input" type="text" class="form-control navy-text" placeholder="Country">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <h1 class="navy-text submit-form-special-header content-font">City</h1>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group navy-text">
+                                    <input id="change-city-input" type="text" class="form-control navy-text" placeholder="City"> 
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <h1 class="navy-text submit-form-special-header content-font">City</h1>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="input-group navy-text">
-                                <input id="change-city-input" type="text" class="form-control navy-text" placeholder="Enter City here">
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button id="change-info-btn" type="button" class="btn btn-lg navy-background text-light content-font m-auto p-3">Change</button>
+                    <button id="change-info-btn" type="button" class="btn btn-lg navy-background text-light content-font m-auto p-3" data-dismiss="modal">Change</button>
                 </div>
             </div>
         </div>
@@ -156,7 +140,7 @@
                     </div>
                     <div class="row w-100 m-0 text-center justify-content-center align-items-center submit-form-row">
                         <div class="col-12">
-                            <h1 class="tan-text header-font submit-form-headers">Event</h1>
+                            <h1 class="tan-text header-font submit-form-headers">Description</h1>
                         </div>
                         <div class="col-12">
                             <div class="input-group ">
@@ -178,7 +162,7 @@
                 <div class="modal-footer d-flex justify-content-center">
                     <button id="add-full-list-btn" type="button" class="btn btn-lg navy-background text-light content-font m-auto p-3" data-dismiss="modal">Add</button>
                 </div>
-            </div>
+            </div>   
         </div>
     </div>
     <!-- Main Section -->
@@ -188,7 +172,7 @@
             </div>
             <div id="top-profile-content" class="bg-light d-table rounded justify-content-center">
                 <i class="fas fa-globe m-3 tan-text"></i>
-                <h1 class="d-inline m-2 navy-text content-font font-weight-bold"> Destination </h1>
+                <h1 class="d-inline m-2 navy-text content-font font-weight-bold" id="destination-label"></h1>
             </div>
         </div>
     </div>
@@ -207,18 +191,12 @@
                 <div class="grey-background navy-text rounded mt-2 content-font-size w-100">
                     <div class="table-responsive content-font-size">
                         <table id="current-day-activities" class="table table-bordered table-hover">
-                            <thead>
+                            <thead> 
                                 <tr>
-                                    <th>Category</th>
-                                    <th>Event</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr></tr>
-                                <tr>
-                                    <td>Food</td>
-                                    <td>Dinner at the Mcdonald's on first street</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -237,15 +215,10 @@
                         <table id="full-activities-table" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Category</th>
-                                    <th>Event</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Food</td>
-                                    <td>Dinner at the Mcdonald's on first street</td>
-                                </tr>
+                                    <tr></tr>
                             </tbody>
                         </table>
                     </div>
@@ -266,7 +239,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     <!-- Footer -->
     <footer class="container-fluid w-100 navy-background d-flex align-items-center justify-content-center mt-2">
         <div class="footer-copyright text-center">
@@ -279,10 +252,57 @@
     <!-- Main Picker javascript-->
     <script src="assets/javascript/picker.date.js"></script>
     <!-- Picker javascript for the date-->
-    <script src="assets/javascript/user.js"></script>
+
+
+    <script type="module" src="assets/javascript/user.js"></script>
     <!--Link to external javascript file for the general user information-->
-    <script src="assets/javascript/calendar.js"></script>
-    <!--Link to external javascript file for the specific calendar page-->
+
+    <script type="text/javascript">
+        // Initializes the calendar. Have to do it here in order to use ES6 modules in the calendar.js file
+        console.log('Initializing the calendar');
+        var calendarPickDate = document.getElementById("calendar-pick-date");
+        var calendar = new Kalendae({
+            attachTo: calendarPickDate,
+            months: 1,
+            mode: 'single',
+        });
+
+          // Function for getting the date when the selection changes
+        // The selected value is then written to local storage, where it is used by another function 
+        // to update the "selected day" table with the activities associated with that day
+        calendar.subscribe('change', function (date) {
+            selectedDate = this.getSelected();
+            localStorage.setItem("Selected Date", selectedDate);
+            console.log('New Selected Date: ' + selectedDate);
+        });
+
+
+        //Functions to manipulate the full list of activities. Vanilla JS was the easiest way to make this work. 
+        var addFullList = function () {
+            var row = fullActivitiesTable.insertRow();
+            row.className = 'dynamic-row';
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = addActivityInput.value;
+            newEventTd = document.createElement('p'); //Append a paragraph to the <td> element and add a hyperlink if a URL is included
+            if (addURLInput.value !== '') {
+                newanchor = document.createElement('a')
+                newanchor.setAttribute('target', '_blank')
+                newanchor.setAttribute('href', addURLInput.value);
+                newanchor.text = addEventInput.value;
+                newEventTd.appendChild(newanchor);
+            } else {
+                newEventTd.innerHTML = addEventInput.value;
+            }
+            cell2.appendChild(newEventTd);
+        }; 
+    </script>
+
+    <script type="module" src="assets/javascript/calendar.js"></script>
+    <!--Link to external javascript file for the specific calendar page. If we make this a module, the calendar library breaks-->
+
+
+
 </body>
- 
+
 </html>

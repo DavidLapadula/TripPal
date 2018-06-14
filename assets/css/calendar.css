@@ -1,7 +1,7 @@
 /* Application Fonts and colors */
 html {
     height: 100%;
-  }    
+  }   
   
 body { 
     background-color: rgb(228, 228, 228);
@@ -10,11 +10,7 @@ body {
     padding-top: 1em; 
     margin: 0; 
     min-height: 100%;
-}    
-
-button {
-    cursor: pointer; 
-}
+}      
 
 #calendar-page-container {
     position: relative; 
@@ -37,7 +33,7 @@ button {
 .tan-background {
     background-color: rgb(126, 83, 4); 
 } 
-  
+ 
 .header-font {
     font-family: 'Luckiest Guy', cursive;
 } 
@@ -54,6 +50,9 @@ a {
     color: inherit; 
 }
 
+button {
+    cursor: pointer; 
+}
 
 /* Body Styling */
 
@@ -106,7 +105,7 @@ input {
     font-size: 4vw; 
 }
 
- 
+
 .section-header {
     font-size: 2vw; 
 } 
@@ -190,7 +189,6 @@ footer {
     .submit-form-special-header {
         font-size: 2vw; 
     }
-       
 
 } 
 
@@ -223,7 +221,7 @@ footer {
     .submit-form-special-header {
         font-size: 2.1vw; 
     }
- 
+
 }   
 
 @media screen and (max-width: 600px) {
@@ -231,7 +229,7 @@ footer {
     #nav-h1 {
         display: block;
         font-size: 6vw;  
-    } 
+    }
 
     #top-profile-content {
         left: 10%; 
@@ -253,7 +251,7 @@ footer {
     .footer-content {
         font-size: 3vw; 
     }
-
+ 
     .navbar-nav {
         flex-direction: row; 
         align-items: center;
