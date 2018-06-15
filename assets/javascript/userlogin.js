@@ -450,6 +450,7 @@ $('#google-log-in').on('click', function (event) {
 
                 // To add the users to the table with 
                 var usersRef = database.ref('/users');
+                
 
                 console.log('adding a new user: ' + uid);
                 usersRef.child(uid).set({
@@ -461,7 +462,7 @@ $('#google-log-in').on('click', function (event) {
 
 
                 console.log(`New Google user ${name} added with reference ${uid}`);
-
+  
             }
             else
                 console.log('Not adding new user');
@@ -492,7 +493,7 @@ function DoesUserExistInFirebase(uid) {
         console.log(snapshot.val());
         snapshot.forEach(function (data) {
             console.log(data.key);
-        });
+        });  
 
         if (snapshot.numChildren() >= 1) {
             console.log(`User is already in TripPal Database`);

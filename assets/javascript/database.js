@@ -14,7 +14,7 @@ export {
     RemoveSelectedActivityFromDate,
     RemoveSelectedActivity,
     RemoveSelectedActivityFromDateAssignments, 
-    UpdateTripDatesLocation
+    UpdateTripDatesLocation  
 };
 
 import { database } from "./userlogin.js"; // import the file
@@ -30,7 +30,7 @@ const GetUserInfoFromFirebasePromise = (database, user) => {
     // we need to get the information based on the user's Google id
     return new Promise((resolve, reject) => {
 
-        console.log('inside GetUserInfoFromFirebasePromise');
+        //console.log('inside GetUserInfoFromFirebasePromise');
         var returnVal = null;
         let userObject = {
             googleUserID: user.uid
@@ -41,22 +41,22 @@ const GetUserInfoFromFirebasePromise = (database, user) => {
         usersRef.once("value").then((snapshot) => {
 
             if (snapshot.numChildren() >= 1) {
-                console.log(`User is already in TripPal Database`);
+                //console.log(`User is already in TripPal Database`);
 
-                //console.log(snapshot.val());
+                ////console.log(snapshot.val());
                 snapshot.forEach(function (data) {
-                    console.log(data.key + ": " + data.val());
+                    //console.log(data.key + ": " + data.val());
                     returnVal = data;
                     userObject[data.key] = data.val();
                 })
 
                 return new Promise(function (resolve, reject) {
-                    console.log('new promise after looping through user items');
+                    //console.log('new promise after looping through user items');
                     resolve(userObject);
                 })
             }
             else {
-                console.log('user is not in firebase database');
+                //console.log('user is not in firebase database');
                 returnVal = 'faiilure!!!';
 
                 return new Promise(function (resolve, reject) {
@@ -66,7 +66,7 @@ const GetUserInfoFromFirebasePromise = (database, user) => {
         })
             .then(function (returnVal) {
 
-                console.log(`.then: User is already in TripPal Database ${returnVal}`);
+                //console.log(`.then: User is already in TripPal Database ${returnVal}`);
                 resolve(returnVal);
             })
     });
@@ -74,27 +74,27 @@ const GetUserInfoFromFirebasePromise = (database, user) => {
 
 // I think I will need to rewrite this as a promise, with the usersRef.once being a part of the .then
 function GetUserInfoFromFirebase(database, user) {
-    console.log('GetUserInfoFromFirebase');
-    console.log(`DoesUserExistInFirebase: ${user.uid}`);
+    //console.log('GetUserInfoFromFirebase');
+    //console.log(`DoesUserExistInFirebase: ${user.uid}`);
 
     var usersRef = database.ref('/users/' + user.uid);
     let returnVal = null;
 
 
     usersRef.once("value").then((snapshot) => {
-        //console.log(snapshot.val());
+        ////console.log(snapshot.val());
         snapshot.forEach(function (data) {
-            console.log(data.key + ": " + data.val());
+            //console.log(data.key + ": " + data.val());
             returnVal = data;
         });
 
         if (snapshot.numChildren() >= 1) {
-            console.log(`User is already in TripPal Database`);
+            //console.log(`User is already in TripPal Database`);
         }
 
     }).then(() => {
 
-        console.log('about to return ' + returnVal);
+        //console.log('about to return ' + returnVal);
         return returnVal;
     });
 }
@@ -118,21 +118,21 @@ const ReadAllPossibleActivitiesForUser = (database) => {
 
         usersRef.once("value").then((snapshot) => {
 
-            console.log(snapshot.numChildren() + ' records found');
+            //console.log(snapshot.numChildren() + ' records found');
             snapshot.forEach(function (data) {
-                //console.log(data.key + ": " + data.val());
+                ////console.log(data.key + ": " + data.val());
                 objectOfAllActivities[data.key] = data.val();
             })
 
             return new Promise(function (resolve, reject) {
-                //console.log('now returning all of the research records');
+                ////console.log('now returning all of the research records');
                 resolve(objectOfAllActivities); // resolves to the .then, which returns it
             })
         })
             .then(function (returnVal) {
 
-                console.log('Returning items from ReadAllPossibleActivitiesForUser:');
-                //console.log(returnVal);            
+                //console.log('Returning items from ReadAllPossibleActivitiesForUser:');
+                ////console.log(returnVal);            
                 resolve(returnVal);
             })
     });
@@ -173,7 +173,7 @@ const StoreActivityReferenceToSpecificDate = (dateVal, activityRef) => {
         Need to be able to check if the entry already exists, and only add it it doesn't already
     */
 
-    console.log('called StoreActivityReferenceToSpecificDate to add new date association');
+    //console.log('called StoreActivityReferenceToSpecificDate to add new date association');
     return new Promise((resolve, reject) => {
 
         var newItem = {};
@@ -185,7 +185,7 @@ const StoreActivityReferenceToSpecificDate = (dateVal, activityRef) => {
 
         // Add the date/time so we can know when the item was added to the list
         database.ref('/selectedForDay/' + user.uid + '/' + dateVal).push(newItem);
-        console.log(`The clicked item has now been stored under /selectedForDay/${user.uid}/${dateVal}`);
+        //console.log(`The clicked item has now been stored under /selectedForDay/${user.uid}/${dateVal}`);
         resolve();
     });
 };
@@ -196,7 +196,7 @@ const ReadAllAssignedActivitiesForUser = () => {
 
     return new Promise((resolve, reject) => {
 
-        console.log('running ReadAssignedActivitiesForUser');
+        //console.log('running ReadAssignedActivitiesForUser');
 
         var user = firebase.auth().currentUser;
         var usersRef = database.ref('/selectedForDay/' + user.uid);
@@ -206,24 +206,24 @@ const ReadAllAssignedActivitiesForUser = () => {
             .once("value")
             .then((snapshot) => {
 
-                console.log(snapshot.numChildren() + ' specific Dates have activities associated with them for this user');
+                //console.log(snapshot.numChildren() + ' specific Dates have activities associated with them for this user');
                 snapshot.forEach(function (data) {
 
                     objectOfAllActivities[data.key] = data.val();
                 });
 
-                console.log(objectOfAllActivities, "before resolve");
+                //console.log(objectOfAllActivities, "before resolve");
 
                 return resolve(objectOfAllActivities);
                 //  new Promise(function (resolve, reject) {
-                //     //console.log('now returning all of the assigned date records');
+                //     ////console.log('now returning all of the assigned date records');
                 //     resolve(objectOfAllActivities); // resolves to the .then, which returns it
                 // })
             });
         // .then(function (returnVal) {
 
-        //     console.log('Returning items from ReadAssignedActivitiesForUser:');
-        //     console.log(returnVal);
+        //     //console.log('Returning items from ReadAssignedActivitiesForUser:');
+        //     //console.log(returnVal);
         //     resolve(returnVal);
         // });
     });
@@ -233,7 +233,7 @@ const ReadAllAssignedActivitiesForUser = () => {
 // This function get the information about the activity located by the given key
 const GetActivityInfoByKey = (keyValueToFind, assignedDate) => {
 
-    console.log(`    start: GetActivityInfoByKey for ${keyValueToFind} on ${assignedDate}`);
+    //console.log(`    start: GetActivityInfoByKey for ${keyValueToFind} on ${assignedDate}`);
 
     var user = firebase.auth().currentUser;
     var usersRef = database.ref('/allresearchitems/' + user.uid + '/' + keyValueToFind);
@@ -241,19 +241,19 @@ const GetActivityInfoByKey = (keyValueToFind, assignedDate) => {
     returnObject['assignedDate'] = assignedDate; //pass from the key of the item in the previous function
     returnObject['activityRef'] = keyValueToFind;
     
-    console.log('GetActivityInfoByKey before usersref');
+    //console.log('GetActivityInfoByKey before usersref');
 
     return usersRef
         .once("value")
         .then((snapshot) => {
-            console.log('GetActivityInfoByKey in snapshot');
+            //console.log('GetActivityInfoByKey in snapshot');
             snapshot.forEach(function (data) {
 
                 returnObject[data.key] = data.val();
             })
 
-            console.log('GetActivityInfoByKey just before return', returnObject);
-            console.log(`    end:   GetActivityInfoByKey for ${keyValueToFind} on ${assignedDate}`, returnObject);
+            //console.log('GetActivityInfoByKey just before return', returnObject);
+            //console.log(`    end:   GetActivityInfoByKey for ${keyValueToFind} on ${assignedDate}`, returnObject);
             return returnObject;
         });
 
@@ -272,8 +272,8 @@ function GetAllAssignedActivityInfo(listOfItems) {
         // To do: I'll probably have to clear the existing table data before updating it
         // Then I'll have to loop for each object in the listOfItems
 
-        console.log('running GetAllAssignedActivityInfo to get a list of all activites assigned to any day');
-        //console.log(listOfItems);
+        //console.log('running GetAllAssignedActivityInfo to get a list of all activites assigned to any day');
+        ////console.log(listOfItems);
 
         // loop through all of the items and add them to the table
         // item refers to the Firebase key for the activity entry
@@ -284,7 +284,7 @@ function GetAllAssignedActivityInfo(listOfItems) {
         let activityPromises = [];
         for (var item in listOfItems) {
 
-            console.log(item);
+            //console.log(item);
             // Each item represents a day
             // each day will have multiple activities listed
             // For each of those activities, we need to get the activity information from another table
@@ -308,7 +308,7 @@ function GetAllAssignedActivityInfo(listOfItems) {
         Promise.all(activityPromises)
             .then((results) => {
 
-                console.log('finishing GetAllAssignedActivityInfo');
+                //console.log('finishing GetAllAssignedActivityInfo');
                 resolve(allAssignedActivities);
             })
 
@@ -320,7 +320,7 @@ function GetAllAssignedActivityInfo(listOfItems) {
 
 const ReadAssignedActivitiesForUserOnSpecificDate = (selectedDate) => {
 
-    console.log(`running ReadAssignedActivitiesForUserOnSpecificDate for ${selectedDate}`);
+    //console.log(`running ReadAssignedActivitiesForUserOnSpecificDate for ${selectedDate}`);
 
     var user = firebase.auth().currentUser;
     var usersRef = database.ref('/selectedForDay/' + user.uid + '/' + selectedDate);
@@ -331,7 +331,7 @@ const ReadAssignedActivitiesForUserOnSpecificDate = (selectedDate) => {
         .then((snapshot) => {
 
             let activityPromises = [];
-            console.log('ReadAssignedActivitiesForUserOnSpecificDate: ' + snapshot.numChildren() + ' activities are assigned ' + selectedDate + ' for this user');
+            //console.log('ReadAssignedActivitiesForUserOnSpecificDate: ' + snapshot.numChildren() + ' activities are assigned ' + selectedDate + ' for this user');
             snapshot.forEach(function (data) {
 
                 // Obtain the reference key for the activity
@@ -348,7 +348,7 @@ const ReadAssignedActivitiesForUserOnSpecificDate = (selectedDate) => {
             // https://stackoverflow.com/questions/28921127/how-to-wait-for-a-javascript-promise-to-resolve-before-resuming-function
             // I can return the Promise.all because it is an array of all the promise results,
             // which is the detailed information about each activity
-            console.log('GetAllAssignedActivityInfo: returning the activities assigned to ' + selectedDate);
+            //console.log('GetAllAssignedActivityInfo: returning the activities assigned to ' + selectedDate);
             return Promise.all(activityPromises);
 
         });
@@ -367,7 +367,7 @@ function RemoveSelectedActivityFromDate(selectedDate, activityRef) {
     var query = activityReference.orderByChild('activityRef').equalTo(key_to_delete);
     query.on('child_added', function(snapshot)
     {
-        console.log('Deleting record' + '/selectedForDay/' + user.uid + '/' + selectedDate + '.activityRef: ' + key_to_delete);
+        //console.log('Deleting record' + '/selectedForDay/' + user.uid + '/' + selectedDate + '.activityRef: ' + key_to_delete);
         snapshot.ref.remove();
     });
 }
@@ -380,7 +380,7 @@ function RemoveSelectedActivity(activityRef) {
     var user = firebase.auth().currentUser;
     var usersRef = database.ref('/allresearchitems/' + user.uid).child(activityRef);
     
-    console.log('Deleting record' + '/allresearchitems/'+user.uid+'/'+activityRef);
+    //console.log('Deleting record' + '/allresearchitems/'+user.uid+'/'+activityRef);
     usersRef.remove()
 }
 
@@ -407,7 +407,7 @@ function UpdateTripDatesLocation(changedValues) {
     var user = firebase.auth().currentUser;
     var myuserID = user.uid;    
 
-    console.log(`Updating the user's travel date/time/location/etc.`, changedValues);
+    //console.log(`Updating the user's travel date/time/location/etc.`, changedValues);
  
     if ((changedValues.changeStartDate !== '') && (changedValues.changeEndDate !== '') ) {
         firebase.database().ref('/users/' + myuserID + '/endDate/').set(changedValues.changeEndDate); 
@@ -422,7 +422,7 @@ function UpdateTripDatesLocation(changedValues) {
         });  
  
 
-    }
+    }  
 
     if ((changedValues.changeCountry !== '') && (changedValues.changeCity !== '') ) {
         firebase.database().ref('/users/' + myuserID + '/cityLocation/').set(changedValues.changeCity); 
@@ -497,7 +497,7 @@ function UpdateTripDatesLocation(changedValues) {
             var bounds = new google.maps.LatLngBounds();
             places.forEach(function (place) {
                 if (!place.geometry) {
-                    console.log("Returned place contains no geometry");
+                    //console.log("Returned place contains no geometry");
                     return;
                 }
                 var icon = {
