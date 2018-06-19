@@ -86,5 +86,5 @@ $(document).ready(function () {
     });
 
 
-    console.log('index.html loaded');
+    //console.log('index.html loaded');
 }); 

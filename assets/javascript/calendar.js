@@ -81,24 +81,24 @@ $(document).ready(function () {
     // Button that adds row to the full list table. Allows the user to leave out data, but not submit a blank form
     addFullListBtn.click(function () {
         event.preventDefault();
-        console.log('addFullListBtn.click');
+        //console.log('addFullListBtn.click');
         if (addEventInput.value !== '') { //Allow user to not ignore some fields, but require at least an event in order to add it to the list
 
-            console.log('creating a new Activity item');
+            //console.log('creating a new Activity item');
             var newItem = {
                 category: addActivityInput.value,
                 description: addEventInput.value,
                 url: addURLInput.value
             }
             StoreNewActivityItemIntoFirebasePromise(database, newItem).then(() => {
-                console.log('finished storing');
+                //console.log('finished storing');
                 ReadAllPossibleActivitiesForUser(database).then(function (masterListofActivities) {
 
-                    console.log('about to call PopulateFullActivityListOnPagePromise');
+                    //console.log('about to call PopulateFullActivityListOnPagePromise');
                     PopulateFullActivityListOnPagePromise(masterListofActivities);
                 });
             });
-            console.log('end of addFullListBtn.click');
+            //console.log('end of addFullListBtn.click');
         }
         addActivityInput.value = '';
         addEventInput.value = '';
@@ -158,7 +158,7 @@ $(document).ready(function () {
             //RemoveSelectedActivityFromDate($(this).attr('assigneddate'), $(this).attr('dbref'));            
 
             var referenceToRemove = $(this).attr('dbref');
-            console.log('Clicked master row: ', $(this), $(this).attr('dbref'));
+            //console.log('Clicked master row: ', $(this), $(this).attr('dbref'));
             RemoveSelectedActivity(referenceToRemove);
             RemoveSelectedActivityFromDateAssignments(referenceToRemove);
             $(this).remove();
@@ -166,8 +166,8 @@ $(document).ready(function () {
 
         if (addDateActivity) { // After selecting a day on the calendar, the user has clicked on the full activities table
 
-            console.log('The clicked activity will be added to the daily list for: ' + localStorage.getItem("Selected Date"));
-            console.log('The activity reference is in the allresearchitems table/userid/reference value:', $(this).attr('dbref'));
+            //console.log('The clicked activity will be added to the daily list for: ' + localStorage.getItem("Selected Date"));
+            //console.log('The activity reference is in the allresearchitems table/userid/reference value:', $(this).attr('dbref'));
 
             /* To do:
                 When adding an event to a selected date here, I need to:
@@ -183,7 +183,7 @@ $(document).ready(function () {
             */
 
             // Promises to get the assigned activities for the selected date, and populate the table
-            console.log('---------Promises-----------');
+            //console.log('---------Promises-----------');
 
             StoreActivityReferenceToSpecificDate(localStorage.getItem("Selected Date"), $(this).attr('dbref'))
                 .then(() => {
@@ -191,7 +191,7 @@ $(document).ready(function () {
                         .then(PopulateAssignedActivitiesForUserOnSpecificDate)
                 });
 
-            console.log('--------------------');
+            //console.log('--------------------');
 
         }
         //Turn both switches off after the row has been clicked and return colors to normal
@@ -286,8 +286,8 @@ function PopulateAssignedActivitiesForUserOnSpecificDate(listOfItems) {
         // I'll probably have to clear the existing table data before updating it
         // Then I'll have to loop for each object in the listOfItems
 
-        console.log('running PopulateAssignedActivitiesForUserOnSpecificDate');
-        console.log('    list of items to add to table: ', listOfItems); //this prints as undefined when empty
+        ////console.log('running PopulateAssignedActivitiesForUserOnSpecificDate');
+        //console.log('    list of items to add to table: ', listOfItems); //this prints as undefined when empty
 
         // Before we add to the table, clear it's existing content
         document.getElementById("current-day-activities").innerHTML = '';
@@ -296,9 +296,9 @@ function PopulateAssignedActivitiesForUserOnSpecificDate(listOfItems) {
 
         // loop through all of the items and add them to the table
         // item refers to the Firebase key for the activity entry
-        let i = 0;
+        let i = 0; 
         for (var item in listOfItems) {
-            //console.log('building info to add row for index: ' + item);
+            ////console.log('building info to add row for index: ' + item);
             var rowInfoToPass = {};
             rowInfoToPass['category'] = listOfItems[item].category;
             rowInfoToPass['description'] = listOfItems[item].description;
@@ -309,7 +309,7 @@ function PopulateAssignedActivitiesForUserOnSpecificDate(listOfItems) {
             addRowToSpecificDateTable(rowInfoToPass);
             i++;
         }
-        console.log(`    Done. ${i} rows should now have been added to the table`);
+        //console.log(`    Done. ${i} rows should now have been added to the table`);
         resolve();
     });
 };
@@ -317,7 +317,7 @@ function PopulateAssignedActivitiesForUserOnSpecificDate(listOfItems) {
 
 var addRowToSpecificDateTable = function (rowInfo) {
 
-    console.log('running addRowToSpecificDateTable: ' + rowInfo.description);
+    //console.log('running addRowToSpecificDateTable: ' + rowInfo.description);
 
     var row = currentDayActivitiesTable.insertRow();
     row.className = 'dynamic-row';
@@ -352,8 +352,8 @@ function PopulateFullActivityListOnPagePromise(listOfItems) {
         // I'll probably have to clear the existing table data before updating it
         // Then I'll have to loop for each object in the listOfItems
 
-        console.log('running PopulateFullActivityListOnPagePromise');
-        //console.log(listOfItems);
+        //console.log('running PopulateFullActivityListOnPagePromise');
+        ////console.log(listOfItems);
 
         // Before we add to the table, clear it's existing content
         document.getElementById("full-activities-table").innerHTML = '';
@@ -361,13 +361,13 @@ function PopulateFullActivityListOnPagePromise(listOfItems) {
         // loop through all of the items and add them to the table
         // item refers to the Firebase key for the activity entry
         for (var item in listOfItems) {
-            //console.log('building info to add row for index: ' + item);
+            ////console.log('building info to add row for index: ' + item);
             var rowInfoToPass = {};
             rowInfoToPass['category'] = listOfItems[item].category;
             rowInfoToPass['description'] = listOfItems[item].description;
             rowInfoToPass['url'] = listOfItems[item].url;
             rowInfoToPass['dbref'] = item;
-            //console.log(rowInfoToPass);
+            ////console.log(rowInfoToPass);
             addRowToMasterTable(rowInfoToPass);
         } 
 
@@ -378,7 +378,7 @@ function PopulateFullActivityListOnPagePromise(listOfItems) {
 // Add an item to the table
 var addRowToMasterTable = function (rowInfo) {
 
-    console.log('running addRowToMasterTable: ' + rowInfo.description);
+    //console.log('running addRowToMasterTable: ' + rowInfo.description);
 
     var row = fullActivitiesTable.insertRow();
     row.className = 'dynamic-row';
@@ -444,7 +444,7 @@ function initAutocomplete(latitude, longitude) {
         var bounds = new google.maps.LatLngBounds();
         places.forEach(function (place) {
             if (!place.geometry) {
-                console.log("Returned place contains no geometry");
+                //console.log("Returned place contains no geometry");
                 return;
             }
             var icon = {
