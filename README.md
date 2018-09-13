@@ -1,11 +1,18 @@
-# tripPal-proj1
-First Project UofT Bootcamp
+# Trip Pal
+Made as a one stop shop for planning a vacation, this application is designed to facilitate consolidating all apsects of planning a vacation. 
 
-Trip Pal is a web application for organizing all aspect of a vacation/getaway
+## Motivation
+This project was built to showcase a variety of client - side skills in a useful and slick web application. Users can start a profile (or use their google account) to track their location, save their start/end dates,as well as search and store things to do on their trip. Users can also plan activities certain days and have their day - planner displayed on the home page. 
 
-Users can start a profile (or use their google account) to track their location, save their start/end dates, as well as search and store things to do on their trip. 
-The existing code base is easily portable and can be used essentially anywhere in the world with little modification
+ 
+## Screenshots
+![](./assets/images/tp2.gif)
+![](./assets/images/tp1.gif)
+![](./assets/images/tp3.gif)
 
+## Tech/framework used
+
+<b>Built with</b>
 Technology used
     - HTML & CSS
     - Bootstrap & Animate.css
@@ -16,5 +23,17 @@ Technology used
 
 Bonus Features
     - Fully Responsive
+
+## Features
+One aspect of our project we were especially happy with was using firebase authentication to store user profiles. We felt that a good organizational tool requires user specific data, and implementing this sucessfully made us very happy with the functionality of our app. 
+
+## Code Example
+Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+
+## View
+
+Planning a vacation, try out the app [here](https://trippal-75742.firebaseapp.com/)
+
+
 
 
