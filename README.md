@@ -23,6 +23,7 @@ Technology used
 
 Bonus Features
     - Fully Responsive
+    - Google Authentication
 
 ## Features
 One aspect of our project we were especially happy with was using firebase authentication to store user profiles. We felt that a good organizational tool requires user specific data, and implementing this sucessfully made us very happy with the functionality of our app. 
