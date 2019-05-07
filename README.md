@@ -13,7 +13,7 @@ This project was built to showcase a variety of client - side skills in a useful
 ## Tech/framework used
 
 <b>Built with</b>
-Technology used
+
     - HTML & CSS
     - Bootstrap & Animate.css
     - Javascript/Jquery
