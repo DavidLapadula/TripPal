@@ -28,9 +28,6 @@ Bonus Features
 ## Features
 One aspect of our project we were especially happy with was using firebase authentication to store user profiles. We felt that a good organizational tool requires user specific data, and implementing this sucessfully made us very happy with the functionality of our app. 
 
-## Code Example
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
-
 ## View
 
 Planning a vacation, try out the app [here](https://trippal-75742.firebaseapp.com/)
